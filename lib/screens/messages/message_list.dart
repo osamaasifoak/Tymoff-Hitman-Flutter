@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tymoff/sample_json/json.dart';
 
 class MessageList extends StatelessWidget {
   final messages;

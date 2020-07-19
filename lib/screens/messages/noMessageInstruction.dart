@@ -3,7 +3,12 @@ import 'package:lottie/lottie.dart';
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
 
+import 'new_message.dart';
+
 class NoMessage extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  const NoMessage({Key key, this.scaffoldKey}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -44,8 +49,8 @@ class NoMessage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 color: SharedColor.blueAncent,
                 onPressed: () {
-                  // Navigator.pushNamed(
-                  //     context, RoutesConstant.chatSetting);
+                  scaffoldKey.currentState.showBottomSheet(
+                      (context) => BottomSheetModalNewMessage());
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

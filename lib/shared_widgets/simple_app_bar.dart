@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tymoff/constant/shared_styles.dart';
 
 class SharedWidget {
   static Widget simpleAppBar(title, context, leadingIcon, {actionIcon}) {
@@ -14,9 +15,7 @@ class SharedWidget {
           color: Colors.black,
         ),
       ),
-      title: Text(title,
-          style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.w500, color: Colors.black)),
+      title: Text(title, style: SharedStyles.heading),
       centerTitle: true,
       actions: <Widget>[actionIcon != null ? Icon(actionIcon) : Container()],
     );
