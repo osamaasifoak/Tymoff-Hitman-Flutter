@@ -1,6 +1,6 @@
-import 'package:design/constant/constant.dart';
-import 'package:design/sample_json/json.dart';
-import 'package:design/shared_widgets/widget.dart';
+import 'package:tymoff/constant/constant.dart';
+import 'package:tymoff/sample_json/json.dart';
+import 'package:tymoff/shared_widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

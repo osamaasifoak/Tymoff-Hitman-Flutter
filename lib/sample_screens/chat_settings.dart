@@ -1,7 +1,7 @@
-import 'package:design/constant/shared_color.dart';
-import 'package:design/sample_json/json.dart';
-import 'package:design/shared_widgets/flat_buttons.dart';
-import 'package:design/shared_widgets/widget.dart';
+import 'package:tymoff/constant/shared_color.dart';
+import 'package:tymoff/sample_json/json.dart';
+import 'package:tymoff/shared_widgets/flat_buttons.dart';
+import 'package:tymoff/shared_widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatSettings extends StatefulWidget {

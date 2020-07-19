@@ -1,7 +1,7 @@
-import 'package:design/sample_screens/broadcast.dart';
-import 'package:design/sample_screens/chat_settings.dart';
-import 'package:design/sample_screens/media.dart';
-import 'package:design/sample_screens/messages.dart';
+import 'package:tymoff/sample_screens/broadcast.dart';
+import 'package:tymoff/sample_screens/chat_settings.dart';
+import 'package:tymoff/sample_screens/media.dart';
+import 'package:tymoff/sample_screens/messages.dart';
 import 'package:flutter/material.dart';
 
 import 'constant/constant.dart';
