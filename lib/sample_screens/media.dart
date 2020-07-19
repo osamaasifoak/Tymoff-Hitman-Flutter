@@ -1,7 +1,7 @@
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/shared_widgets/flat_buttons.dart';
-import 'package:tymoff/shared_widgets/widget.dart';
+import 'package:tymoff/shared_widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class Media extends StatelessWidget {
@@ -9,7 +9,8 @@ class Media extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: SharedWidget.simpleAppBar(StringConstant.media, context),
+          appBar: SharedWidget.simpleAppBar(
+              StringConstant.media, context, Icons.arrow_back),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Container(
@@ -23,9 +24,9 @@ class Media extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        SharedFlatButtons(btnText: "Photos"),
-                        SharedFlatButtons(btnText: "Links"),
-                        SharedFlatButtons(btnText: "Videos"),
+                        SharedFlatButtons(btnText: StringConstant.photos),
+                        SharedFlatButtons(btnText: StringConstant.links),
+                        SharedFlatButtons(btnText: StringConstant.videos),
                       ],
                     ),
                   ),

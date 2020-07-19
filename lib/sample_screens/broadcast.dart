@@ -1,6 +1,6 @@
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/sample_json/json.dart';
-import 'package:tymoff/shared_widgets/widget.dart';
+import 'package:tymoff/shared_widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,8 +9,8 @@ class BroadcastSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar:
-              SharedWidget.simpleAppBar(StringConstant.officeFriends, context),
+          appBar: SharedWidget.simpleAppBar(
+              StringConstant.officeFriends, context, Icons.arrow_back),
           body: Container(
             height: MediaQuery.of(context).size.height,
             color: Colors.white,
@@ -20,7 +20,7 @@ class BroadcastSettings extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15.0, vertical: 15),
-                  child: Text("Broadcast settings",
+                  child: Text(StringConstant.broadcastSettings,
                       style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class BroadcastSettings extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: TextFormField(
                         decoration: new InputDecoration(
-                            hintText: "Broadcast list name",
+                            hintText: StringConstant.broadcastListName,
                             hintStyle: TextStyle(
                               fontSize: 15,
                             ),
@@ -45,7 +45,7 @@ class BroadcastSettings extends StatelessWidget {
                                 color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold),
-                            suffixText: "Motivation tips",
+                            suffixText: StringConstant.motivationTips,
                             border: InputBorder.none),
                       ),
                     ),
@@ -58,13 +58,13 @@ class BroadcastSettings extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        '${SampleJSON.user.length} Members',
+                        '${SampleJSON.user.length} ${StringConstant.members}',
                         maxLines: 1,
                         style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "Add new member",
+                        StringConstant.addNewMembers,
                         maxLines: 1,
                         style: TextStyle(fontSize: 18, color: Colors.blue[600]),
                       )

@@ -1,7 +1,8 @@
+import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/shared_widgets/flat_buttons.dart';
-import 'package:tymoff/shared_widgets/widget.dart';
+import 'package:tymoff/shared_widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class ChatSettings extends StatefulWidget {
@@ -16,7 +17,8 @@ class _ChatSettingsState extends State<ChatSettings> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: SharedWidget.simpleAppBar("Hitman", context),
+          appBar:
+              SharedWidget.simpleAppBar("Hitman", context, Icons.arrow_back),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +35,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15.0, vertical: 15),
-                  child: Text("Chat settings",
+                  child: Text(StringConstant.chatSettings,
                       style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -49,7 +51,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              "Notifications",
+                              StringConstant.notifications,
                               style: TextStyle(fontSize: 18),
                             ),
                             Switch(
@@ -79,16 +81,16 @@ class _ChatSettingsState extends State<ChatSettings> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
-                              SharedFlatButtons(btnText: "Photos"),
-                              SharedFlatButtons(btnText: "Links"),
-                              SharedFlatButtons(btnText: "Videos"),
+                              SharedFlatButtons(btnText: StringConstant.photos),
+                              SharedFlatButtons(btnText: StringConstant.links),
+                              SharedFlatButtons(btnText: StringConstant.videos),
                             ],
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15.0, vertical: 15),
-                          child: Text("Media",
+                          child: Text(StringConstant.media,
                               style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,

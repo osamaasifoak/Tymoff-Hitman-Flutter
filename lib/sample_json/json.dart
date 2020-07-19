@@ -56,38 +56,38 @@ class SampleJSON {
     },
   ];
   static const messages = [
-    {
-      "name": "Osama",
-      "view": false,
-      "last_message": "hey what's up?",
-      "last_time": "16 min ago",
-      "image":
-          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-    },
-    {
-      "name": "Angel",
-      "view": false,
-      "last_message": "hey what's up?",
-      "last_time": "16 min ago",
-      "image":
-          "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
-    },
-    {
-      "name": "Osama",
-      "view": false,
-      "last_message": "hey what's up?",
-      "last_time": "16 min ago",
-      "image":
-          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-    },
-    {
-      "name": "Angel",
-      "view": true,
-      "last_message": "hey what's up?",
-      "last_time": "16 min ago",
-      "image":
-          "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
-    },
+    // {
+    //   "name": "Osama",
+    //   "view": false,
+    //   "last_message": "hey what's up?",
+    //   "last_time": "16 min ago",
+    //   "image":
+    //       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    // },
+    // {
+    //   "name": "Angel",
+    //   "view": false,
+    //   "last_message": "hey what's up?",
+    //   "last_time": "16 min ago",
+    //   "image":
+    //       "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
+    // },
+    // {
+    //   "name": "Osama",
+    //   "view": false,
+    //   "last_message": "hey what's up?",
+    //   "last_time": "16 min ago",
+    //   "image":
+    //       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    // },
+    // {
+    //   "name": "Angel",
+    //   "view": true,
+    //   "last_message": "hey what's up?",
+    //   "last_time": "16 min ago",
+    //   "image":
+    //       "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
+    // },
   ];
     static const photos = [
     {
