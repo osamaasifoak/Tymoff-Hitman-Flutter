@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../constant/constant.dart';
-import '../../constant/shared_color.dart';
+import 'package:tymoff/constant/constant.dart';
 import '../../constant/shared_color.dart';
 import '../../sample_json/json.dart';
 import '../../shared_widgets/search_bar.dart';
@@ -131,13 +130,21 @@ class Chat extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          Container(
-              decoration: new BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.black),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(Icons.attach_file, color: Colors.white),
-              )),
+          InkWell(
+            onTap: () {
+              bottomSheetAttachment(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.black),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.attach_file, color: Colors.white),
+                  )),
+            ),
+          ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -153,32 +160,98 @@ class Chat extends StatelessWidget {
           ),
           InkWell(
             onTap: () {},
-            child: Container(
-              height: MediaQuery.of(context).size.height / 13,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    alignment: Alignment.center,
-                    decoration: new BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.lightBlueAccent, blurRadius: 3.0)
-                        ],
-                        color: Colors.lightBlueAccent,
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        FontAwesomeIcons.paperPlane,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    )),
-              ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  alignment: Alignment.center,
+                  height: MediaQuery.of(context).size.height / 14,
+                  decoration: new BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(color: Colors.lightBlueAccent, blurRadius: 3.0)
+                    ],
+                    color: Colors.lightBlueAccent,
+                    shape: BoxShape.circle,
+                    // borderRadius: BorderRadius.circular(50)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      FontAwesomeIcons.paperPlane,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  )),
             ),
           ),
         ],
       ),
     );
+  }
+
+  bottomSheetAttachment(context) {
+    showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+        ),
+        builder: (builder) {
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    StringConstant.sendaFile,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
+                  padding: EdgeInsets.all(15.0),
+                ),
+                Divider(),
+                Container(
+                  child: Text(
+                    StringConstant.clickaPhoto,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  padding: EdgeInsets.all(10.0),
+                ),
+                Divider(),
+                Container(
+                  child: Text(
+                    StringConstant.uploadFromGallery,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  padding: EdgeInsets.all(10.0),
+                ),
+                Divider(),
+                Container(
+                  child: Text(
+                    StringConstant.document,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  padding: EdgeInsets.all(10.0),
+                ),
+                Divider(),
+                Container(
+                  child: Text(
+                    StringConstant.location,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  padding: EdgeInsets.all(10.0),
+                ),
+                Divider(),
+                Container(
+                  child: Text(
+                    StringConstant.contact,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  padding: EdgeInsets.all(10.0),
+                ),
+                Divider(),
+              ],
+            ),
+          );
+        });
   }
 }

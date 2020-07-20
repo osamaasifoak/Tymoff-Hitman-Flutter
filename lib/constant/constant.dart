@@ -16,6 +16,13 @@ class StringConstant {
   static const String messages = "Messages";
   static const String newMessages = "New messages";
   static const String sendMessages = "Send message";
+  static const String sendaFile = "Send a file";
+  static const String clickaPhoto = "Click a photo";
+  static const String uploadFromGallery = "Upload from gallery";
+  static const String document = "Document";
+  static const String location = "Location";
+  static const String contact = "Contact";
+
 }
 
 class RoutesConstant {
