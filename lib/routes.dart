@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tymoff/screens/messages/status_view.dart';
 import 'constant/constant.dart';
 import 'main.dart';
 import 'sample_screens/broadcast.dart';
@@ -19,6 +20,11 @@ ongenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => ChatSettings());
     case RoutesConstant.chat:
       return MaterialPageRoute(builder: (_) => Chat());
+    case RoutesConstant.status:
+      return MaterialPageRoute(
+          builder: (_) => Status(
+                user: settings.arguments,
+              ));
     case RoutesConstant.media:
       return MaterialPageRoute(builder: (_) => Media());
     default:

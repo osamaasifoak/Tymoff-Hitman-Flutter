@@ -32,6 +32,7 @@ class RoutesConstant {
   static const String broadcastSetting = 'broadcastSetting';
   static const String chatSetting = 'chatSetting';
   static const String chat = 'chat';
+  static const String status = 'status';
   static const String media = 'media';
 }
 

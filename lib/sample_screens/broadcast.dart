@@ -9,8 +9,8 @@ class BroadcastSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: SharedWidget.simpleAppBar(
-              StringConstant.officeFriends, context, Icons.arrow_back),
+          appBar: SharedWidget.simpleAppBar(StringConstant.officeFriends,
+              context, Icons.arrow_back, Colors.grey[200].withOpacity(0.2)),
           body: Container(
             height: MediaQuery.of(context).size.height,
             color: Colors.white,

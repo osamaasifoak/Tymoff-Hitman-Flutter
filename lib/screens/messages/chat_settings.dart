@@ -18,7 +18,7 @@ class _ChatSettingsState extends State<ChatSettings> {
     return SafeArea(
       child: Scaffold(
           appBar:
-              SharedWidget.simpleAppBar("Hitman", context, Icons.arrow_back),
+              SharedWidget.simpleAppBar("Hitman", context, Icons.arrow_back,Colors.grey[200].withOpacity(0.2)),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

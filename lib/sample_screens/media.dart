@@ -9,8 +9,8 @@ class Media extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: SharedWidget.simpleAppBar(
-              StringConstant.media, context, Icons.arrow_back),
+          appBar: SharedWidget.simpleAppBar(StringConstant.media, context,
+              Icons.arrow_back, Colors.grey[200].withOpacity(0.2)),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Container(

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tymoff/constant/shared_styles.dart';
 
 class SharedWidget {
-  static Widget simpleAppBar(title, context, leadingIcon, {actionIcon}) {
+  static Widget simpleAppBar(title, context, leadingIcon, appBarColor,
+      {actionIcon}) {
     return AppBar(
       elevation: 0.0,
-      backgroundColor: Colors.grey[200].withOpacity(0.2),
+      backgroundColor: appBarColor,
       leading: InkWell(
         onTap: () {
           Navigator.pop(context);

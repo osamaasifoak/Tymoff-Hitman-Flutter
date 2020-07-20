@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
+
 class StatusList extends StatelessWidget {
   final status;
 
@@ -44,31 +46,38 @@ class StatusList extends StatelessWidget {
                                 ))
                           ],
                         )
-                      : Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: CircleAvatar(
-                                radius: 38,
-                                backgroundColor: SharedColor.blueAncent,
+                      : InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, RoutesConstant.status,
+                                arguments: status[index]);
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(2.0),
                                 child: CircleAvatar(
-                                  radius:
-                                      status[index]["view"] == false ? 35 : 38,
-                                  backgroundImage:
-                                      NetworkImage(status[index]["image"]),
+                                  radius: 38,
+                                  backgroundColor: SharedColor.blueAncent,
+                                  child: CircleAvatar(
+                                    radius: status[index]["view"] == false
+                                        ? 35
+                                        : 38,
+                                    backgroundImage:
+                                        NetworkImage(status[index]["image"]),
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                                width: 50,
-                                child: Center(
-                                  child: Text(
-                                    status[index]["name"],
-                                    maxLines: 1,
-                                    style: TextStyle(fontSize: 12),
-                                  ),
-                                ))
-                          ],
+                              SizedBox(
+                                  width: 50,
+                                  child: Center(
+                                    child: Text(
+                                      status[index]["name"],
+                                      maxLines: 1,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ))
+                            ],
+                          ),
                         ),
                 ],
               );
