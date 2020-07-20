@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constant/constant.dart';
+
 class MessageList extends StatelessWidget {
   final messages;
 
@@ -19,18 +21,24 @@ class MessageList extends StatelessWidget {
         itemCount: messages.length,
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: CircleAvatar(
-                backgroundImage: NetworkImage(messages[index]["image"])),
-            title:
-                Text(messages[index]["name"], style: TextStyle(fontSize: 18)),
-            subtitle: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(messages[index]["name"]),
-                Text(messages[index]["last_time"],
-                    style: TextStyle(fontStyle: FontStyle.italic)),
-              ],
+          return InkWell(
+            enableFeedback: true,
+            onTap: () {
+              Navigator.pushNamed(context, RoutesConstant.chat);
+            },
+            child: ListTile(
+              leading: CircleAvatar(
+                  backgroundImage: NetworkImage(messages[index]["image"])),
+              title:
+                  Text(messages[index]["name"], style: TextStyle(fontSize: 18)),
+              subtitle: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(messages[index]["name"]),
+                  Text(messages[index]["last_time"],
+                      style: TextStyle(fontStyle: FontStyle.italic)),
+                ],
+              ),
             ),
           );
         },

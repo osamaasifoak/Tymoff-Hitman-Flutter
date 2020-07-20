@@ -69,8 +69,7 @@ class Messages extends StatelessWidget {
         body: Container(
           height: MediaQuery.of(context).size.height,
           color: Colors.white,
-          child: SingleChildScrollView(
-            child: Column(
+          child: Column(
               children: <Widget>[
                 SearchBar(),
                 SampleJSON.messages.length != 0
@@ -84,7 +83,6 @@ class Messages extends StatelessWidget {
                         scaffoldKey: scaffoldKey,
                       )
               ],
-            ),
           ),
         ),
       ),

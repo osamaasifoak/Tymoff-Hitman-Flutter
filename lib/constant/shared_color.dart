@@ -2,5 +2,5 @@ import 'package:flutter/material.dart';
 
 class SharedColor {
   static Color blueAncent = Colors.lightBlueAccent;
-   static Color grey = Colors.grey[300];
+  static Color grey = Colors.grey[300];
 }

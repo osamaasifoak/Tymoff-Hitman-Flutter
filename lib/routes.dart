@@ -3,6 +3,7 @@ import 'constant/constant.dart';
 import 'main.dart';
 import 'sample_screens/broadcast.dart';
 import 'sample_screens/media.dart';
+import 'screens/messages/chat.dart';
 import 'screens/messages/messages.dart';
 import 'screens/messages/chat_settings.dart';
 
@@ -16,6 +17,8 @@ ongenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => BroadcastSettings());
     case RoutesConstant.chatSetting:
       return MaterialPageRoute(builder: (_) => ChatSettings());
+    case RoutesConstant.chat:
+      return MaterialPageRoute(builder: (_) => Chat());
     case RoutesConstant.media:
       return MaterialPageRoute(builder: (_) => Media());
     default:
