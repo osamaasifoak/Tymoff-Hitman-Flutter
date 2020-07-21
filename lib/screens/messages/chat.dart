@@ -28,7 +28,9 @@ class Chat extends StatelessWidget {
                 color: Colors.black)),
         actions: <Widget>[
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, RoutesConstant.groupSetting);
+            },
             child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Padding(

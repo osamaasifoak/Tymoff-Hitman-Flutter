@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tymoff/screens/messages/group_setting.dart';
 import 'package:tymoff/screens/messages/status_view.dart';
 import 'constant/constant.dart';
 import 'main.dart';
@@ -18,6 +19,8 @@ ongenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => BroadcastSettings());
     case RoutesConstant.chatSetting:
       return MaterialPageRoute(builder: (_) => ChatSettings());
+    case RoutesConstant.groupSetting:
+      return MaterialPageRoute(builder: (_) => GroupSetting());
     case RoutesConstant.chat:
       return MaterialPageRoute(builder: (_) => Chat());
     case RoutesConstant.status:

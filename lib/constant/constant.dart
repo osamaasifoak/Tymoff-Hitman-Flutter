@@ -8,6 +8,7 @@ class StringConstant {
   static const String addNewMembers = "Add new member";
   static const String newGroup = "New group";
   static const String chatSettings = "Chat settings";
+  static const String groupSettings = "Group settings";
   static const String notifications = "Notifications";
   static const String media = 'Media';
   static const String photos = "Photos";
@@ -31,6 +32,9 @@ class StringConstant {
   static const String whyReportStatus = 'Why are you reporting this status?';
   static const String statusHasBeenReported = 'Status has been reported';
   static const String blockedUser = 'Blocked user';
+  static const String groupName = 'Group name';
+  static const String openToPublic = 'Open to public';
+  static const String postByAdminOnly = 'Post by admin only';
 }
 
 class RoutesConstant {
@@ -39,6 +43,7 @@ class RoutesConstant {
   static const String profile = 'profile';
   static const String broadcastSetting = 'broadcastSetting';
   static const String chatSetting = 'chatSetting';
+  static const String groupSetting = 'groupSetting';
   static const String chat = 'chat';
   static const String status = 'status';
   static const String media = 'media';
