@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
+import 'package:tymoff/sample_json/json.dart';
 
 class Status extends StatefulWidget {
   final user;
@@ -52,36 +53,56 @@ class _StatusState extends State<Status> {
             padding: const EdgeInsets.only(top: 30.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                InkWell(
-                  enableFeedback: true,
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Icon(Icons.arrow_back, color: Colors.white),
-                  ),
-                ),
-                ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                  ),
-                  title: Text(
-                    "Osama",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  trailing: InkWell(
-                      key: actionOnStatusIcon,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    InkWell(
                       enableFeedback: true,
                       onTap: () {
-                        menu.show(widgetKey: actionOnStatusIcon);
+                        Navigator.pop(context);
                       },
-                      child: Icon(FontAwesomeIcons.ellipsisH,
-                          color: Colors.white)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        child: Icon(Icons.arrow_back, color: Colors.white),
+                      ),
+                    ),
+                    ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+                      ),
+                      title: Text(
+                        "Osama",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      trailing: InkWell(
+                          key: actionOnStatusIcon,
+                          enableFeedback: true,
+                          onTap: () {
+                            menu.show(widgetKey: actionOnStatusIcon);
+                          },
+                          child: Icon(FontAwesomeIcons.ellipsisH,
+                              color: Colors.white)),
+                    ),
+                  ],
                 ),
+                widget.user == 1
+                    ? Center(
+                        child: InkWell(
+                          enableFeedback: true,
+                          onTap: () {
+                            bottomSheetStatusViewed(context);
+                          },
+                          child: Icon(
+                            FontAwesomeIcons.eye,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    : Container(),
               ],
             ),
           )),
@@ -300,6 +321,71 @@ class _StatusState extends State<Status> {
                   ),
                 )
               ],
+            ),
+          );
+        });
+  }
+
+  bottomSheetStatusViewed(context) {
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (builder) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: MediaQuery.of(context).size.height / 3,
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      "35 story views",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.blueGrey[900]),
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                  ),
+                  Divider(),
+                  Expanded(
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Divider(
+                            color: Colors.grey.withOpacity(0.5),
+                          ),
+                        );
+                      },
+                      itemCount: SampleJSON.user.length,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          enableFeedback: true,
+                          onTap: () {
+                            Navigator.pushNamed(context, RoutesConstant.chat);
+                          },
+                          child: ListTile(
+                            leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    SampleJSON.user[index]["image"])),
+                            title: Text(SampleJSON.user[index]["name"],
+                                style: TextStyle(fontSize: 18)),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });

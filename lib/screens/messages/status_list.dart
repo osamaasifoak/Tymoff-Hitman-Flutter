@@ -23,7 +23,9 @@ class StatusList extends StatelessWidget {
                       ? InkWell(
                           enableFeedback: true,
                           onTap: () {
-                            bottomSheetAddStatus(context);
+                            Navigator.pushNamed(context, RoutesConstant.status,
+                                arguments: 1);
+                            // bottomSheetAddStatus(context);
                           },
                           child: Column(
                             children: <Widget>[
