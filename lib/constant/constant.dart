@@ -22,7 +22,15 @@ class StringConstant {
   static const String document = "Document";
   static const String location = "Location";
   static const String contact = "Contact";
-
+  static const String reportStatus = 'Report Status';
+  static const String report = 'Report';
+  static const String nudityOrIllegalSubstances =
+      'Nudity or illegal substances';
+  static const String threatOrViolence = 'Threat or violence';
+  static const String other = 'Other';
+  static const String whyReportStatus = 'Why are you reporting this status?';
+  static const String statusHasBeenReported = 'Status has been reported';
+  static const String blockedUser = 'Blocked user';
 }
 
 class RoutesConstant {
