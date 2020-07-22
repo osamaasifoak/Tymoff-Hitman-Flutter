@@ -23,9 +23,7 @@ class StatusList extends StatelessWidget {
                       ? InkWell(
                           enableFeedback: true,
                           onTap: () {
-                            Navigator.pushNamed(context, RoutesConstant.status,
-                                arguments: 1);
-                            // bottomSheetAddStatus(context);
+                            bottomSheetAddStatus(context);
                           },
                           child: Column(
                             children: <Widget>[
@@ -129,6 +127,21 @@ class StatusList extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
                   padding: EdgeInsets.all(10.0),
+                ),
+                Divider(),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesConstant.status,
+                        arguments: 1);
+                  },
+                  child: Container(
+                    child: Text(
+                      "temporary button",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    padding: EdgeInsets.all(10.0),
+                  ),
                 ),
                 Divider(),
               ],

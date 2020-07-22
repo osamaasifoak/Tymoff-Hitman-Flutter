@@ -22,7 +22,10 @@ ongenerateRoutes(RouteSettings settings) {
     case RoutesConstant.groupSetting:
       return MaterialPageRoute(builder: (_) => GroupSetting());
     case RoutesConstant.chat:
-      return MaterialPageRoute(builder: (_) => Chat());
+      return MaterialPageRoute(
+          builder: (_) => Chat(
+                userChat: settings.arguments,
+              ));
     case RoutesConstant.status:
       return MaterialPageRoute(
           builder: (_) => Status(

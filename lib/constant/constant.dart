@@ -35,6 +35,8 @@ class StringConstant {
   static const String groupName = 'Group name';
   static const String openToPublic = 'Open to public';
   static const String postByAdminOnly = 'Post by admin only';
+  static const String reportSpam = 'Report spam';
+  static const String blockUser = 'Block user';
 }
 
 class RoutesConstant {

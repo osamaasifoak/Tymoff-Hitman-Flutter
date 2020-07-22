@@ -5,7 +5,21 @@ import '../../constant/shared_color.dart';
 import '../../sample_json/json.dart';
 import '../../shared_widgets/search_bar.dart';
 
-class Chat extends StatelessWidget {
+class Chat extends StatefulWidget {
+  final userChat;
+
+  const Chat({Key key, this.userChat}) : super(key: key);
+
+  @override
+  _ChatState createState() => _ChatState();
+}
+
+class _ChatState extends State<Chat> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +35,10 @@ class Chat extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.white,
-        title: Text("Oisee",
+        title: Text(
+            widget.userChat["unknown"] == false
+                ? widget.userChat["name"]
+                : widget.userChat["contact"],
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
@@ -52,20 +69,46 @@ class Chat extends StatelessWidget {
             SearchBar(),
             Expanded(
               child: ListView.builder(
-                  itemCount: SampleJSON.chat.length,
+                  itemCount: widget.userChat["unknown"] == false
+                      ? SampleJSON.chat.length
+                      : 1,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Column(
                       children: <Widget>[
-                        SampleJSON.chat[index]["sent"] == "from"
+                        SampleJSON.chat[index]["sent"] == "from" &&
+                                widget.userChat["unknown"] == false
                             ? Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  chatContainer(
-                                      context,
-                                      SampleJSON.chat[index]["message"],
-                                      SampleJSON.chat[index]["media"],
-                                      SharedColor.blueAncent.withOpacity(0.3)),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: <Widget>[
+                                      chatContainer(
+                                          context,
+                                          SampleJSON.chat[index]["message"],
+                                          SampleJSON.chat[index]["media"],
+                                          SharedColor.blueAncent
+                                              .withOpacity(0.3)),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10.0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(Icons.check,
+                                                size: 12,
+                                                color: SharedColor.blueAncent),
+                                            Text(
+                                                SampleJSON.chat[index]
+                                                    ["last_time"],
+                                                style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 10)),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                   CircleAvatar(
                                     backgroundImage: NetworkImage(
                                         SampleJSON.chat[index]["image"]),
@@ -78,13 +121,39 @@ class Chat extends StatelessWidget {
                                     backgroundImage: NetworkImage(
                                         SampleJSON.chat[index]["image"]),
                                   ),
-                                  chatContainer(
-                                      context,
-                                      SampleJSON.chat[index]["message"],
-                                      SampleJSON.chat[index]["media"],
-                                      SharedColor.grey),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      chatContainer(
+                                          context,
+                                          SampleJSON.chat[index]["message"],
+                                          SampleJSON.chat[index]["media"],
+                                          SharedColor.grey),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Text(
+                                                SampleJSON.chat[index]
+                                                    ["last_time"],
+                                                style: TextStyle(
+                                                    color: Colors.black87,
+                                                    fontSize: 10)),
+                                            Icon(Icons.check,
+                                                size: 12,
+                                                color: SharedColor.blueAncent),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
-                              )
+                              ),
+                        widget.userChat["unknown"] == true
+                            ? warningButtons()
+                            : Container()
                       ],
                     );
                   }),
@@ -255,5 +324,47 @@ class Chat extends StatelessWidget {
             ),
           );
         });
+  }
+
+  Widget warningButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            // width: MediaQuery.of(context).size.width * 0.8,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              color: SharedColor.redBtnColor,
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(StringConstant.reportSpam,
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            // width: MediaQuery.of(context).size.width * 0.8,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              color: SharedColor.redBtnColor,
+              onPressed: () {},
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(StringConstant.blockedUser,
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
   }
 }

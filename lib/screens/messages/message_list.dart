@@ -24,7 +24,8 @@ class MessageList extends StatelessWidget {
           return InkWell(
             enableFeedback: true,
             onTap: () {
-              Navigator.pushNamed(context, RoutesConstant.chat);
+              Navigator.pushNamed(context, RoutesConstant.chat,
+                  arguments: messages[index]);
             },
             child: ListTile(
               leading: CircleAvatar(
