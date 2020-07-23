@@ -27,7 +27,7 @@ class BottomSheetModalNewMessage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
@@ -65,27 +65,47 @@ class BottomSheetModalNewMessage extends StatelessWidget {
         ),
         SearchBar(),
         Flexible(
-          child: ListView.separated(
-            separatorBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Divider(
-                  color: Colors.grey.withOpacity(0.5),
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: <Widget>[
+              ListView.separated(
+                separatorBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Divider(
+                      color: Colors.grey.withOpacity(0.5),
+                    ),
+                  );
+                },
+                itemCount: SampleJSON.user.length,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                        backgroundImage:
+                            NetworkImage(SampleJSON.user[index]["image"])),
+                    title: Text(SampleJSON.user[index]["name"],
+                        style: TextStyle(fontSize: 18)),
+                    trailing: Icon(FontAwesomeIcons.circle),
+                  );
+                },
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width*0.8,
+                padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical:10.0),
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  color: SharedColor.blueAncent,
+                  onPressed: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(StringConstant.sendMessages,
+                        style: TextStyle(color: Colors.white)),
+                  ),
                 ),
-              );
-            },
-            itemCount: SampleJSON.user.length,
-            physics: BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: CircleAvatar(
-                    backgroundImage:
-                        NetworkImage(SampleJSON.user[index]["image"])),
-                title: Text(SampleJSON.user[index]["name"],
-                    style: TextStyle(fontSize: 18)),
-                trailing: Icon(FontAwesomeIcons.circle),
-              );
-            },
+              ),
+            ],
           ),
         )
       ]),

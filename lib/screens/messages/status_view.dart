@@ -17,27 +17,27 @@ class _StatusState extends State<Status> {
   GlobalKey actionOnStatusIcon = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    PopupMenu.context = context;
-    PopupMenu menu = PopupMenu(
-        backgroundColor: Colors.white,
-        lineColor: Colors.white,
-        maxColumn: 2,
-        items: [
-          MenuItem(
-              image: Icon(
-            Icons.warning,
-            color: Colors.grey,
-          )),
-          MenuItem(
-            title: StringConstant.reportStatus,
-            textStyle: TextStyle(fontSize: 15.0, color: Colors.redAccent),
-          ),
-        ],
-        onClickMenu: (MenuItemProvider item) {
-          if (item.menuTitle == StringConstant.reportStatus) {
-            bottomSheetReportStatus(context);
-          }
-        });
+    // PopupMenu.context = context;
+    // PopupMenu menu = PopupMenu(
+    //     backgroundColor: Colors.white,
+    //     lineColor: Colors.white,
+    //     maxColumn: 2,
+    //     items: [
+    //       MenuItem(
+    //           image: Icon(
+    //         Icons.warning,
+    //         color: Colors.grey,
+    //       )),
+    //       MenuItem(
+    //         title: StringConstant.reportStatus,
+    //         textStyle: TextStyle(fontSize: 15.0, color: Colors.redAccent),
+    //       ),
+    //     ],
+    //     onClickMenu: (MenuItemProvider item) {
+    //       if (item.menuTitle == StringConstant.reportStatus) {
+    //         bottomSheetReportStatus(context);
+    //       }
+    //     });
 
     return Scaffold(
       extendBody: true,
@@ -70,23 +70,54 @@ class _StatusState extends State<Status> {
                       ),
                     ),
                     ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                      ),
-                      title: Text(
-                        "Osama",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      trailing: InkWell(
-                          key: actionOnStatusIcon,
-                          enableFeedback: true,
-                          onTap: () {
-                            menu.show(widgetKey: actionOnStatusIcon);
-                          },
-                          child: Icon(FontAwesomeIcons.ellipsisH,
-                              color: Colors.white)),
-                    ),
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+                        ),
+                        title: Text(
+                          "Osama",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        trailing: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.ellipsisH,
+                                  color: Colors.grey,
+                                  size: 30,
+                                ),
+                                items: [
+                                  DropdownMenuItem<String>(
+                                    value: "1",
+                                    child: Row(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Icon(
+                                            Icons.warning,
+                                            color: Colors.grey,
+                                            size: 30,
+                                          ),
+                                        ),
+                                        Text(StringConstant.reportStatus,
+                                            style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.redAccent)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                onChanged: (value) {
+                                  setState(() {
+                                    if (value == '1') {
+                                      bottomSheetReportStatus(context);
+                                    }
+                                  });
+                                },
+                              ),
+                            ))),
                   ],
                 ),
                 widget.user == 1
@@ -182,6 +213,7 @@ class _StatusState extends State<Status> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     InkWell(
                       enableFeedback: true,
@@ -189,8 +221,8 @@ class _StatusState extends State<Status> {
                         Navigator.pop(context);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
+                        padding:
+                            const EdgeInsets.only(left: 5, top: 10, bottom: 10),
                         child: Icon(Icons.arrow_back, color: Colors.black),
                       ),
                     ),
@@ -203,6 +235,7 @@ class _StatusState extends State<Status> {
                       ),
                       padding: EdgeInsets.all(15.0),
                     ),
+                    Container()
                   ],
                 ),
                 Divider(),

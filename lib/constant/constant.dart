@@ -53,6 +53,11 @@ class RoutesConstant {
 
 class AssetConstant {
   static const String noMessage = 'assets/noMessages.json';
+  static const String arrowPath = 'assets/icons/arrowPath.svg';
+  static const String attachFile = 'assets/icons/attachFile.svg';
+  static const String chatMessageSend = 'assets/icons/chatMessageSend.svg';
+  static const String iconsMessage = 'assets/icons/iconsMessage.svg';
+  static const String setting = 'assets/icons/setting.svg';
 }
 
 class WarningMessages {

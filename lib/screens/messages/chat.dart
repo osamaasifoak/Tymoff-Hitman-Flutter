@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tymoff/constant/constant.dart';
 import '../../constant/shared_color.dart';
@@ -49,15 +50,13 @@ class _ChatState extends State<Chat> {
               Navigator.pushNamed(context, RoutesConstant.groupSetting);
             },
             child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.settings,
-                    color: Colors.grey,
-                    size: 20,
-                  ),
-                )),
+              padding: const EdgeInsets.all(10.0),
+              child: SvgPicture.asset(
+                AssetConstant.setting,
+                fit: BoxFit.contain,
+                height: 20,
+              ),
+            ),
           )
         ],
       ),
@@ -235,7 +234,7 @@ class _ChatState extends State<Chat> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   alignment: Alignment.center,
-                  height: MediaQuery.of(context).size.height / 14,
+                  height: MediaQuery.of(context).size.height / 16,
                   decoration: new BoxDecoration(
                     boxShadow: [
                       BoxShadow(color: Colors.lightBlueAccent, blurRadius: 3.0)
@@ -245,12 +244,9 @@ class _ChatState extends State<Chat> {
                     // borderRadius: BorderRadius.circular(50)
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      FontAwesomeIcons.paperPlane,
-                      color: Colors.white,
-                      size: 20,
-                    ),
+                    padding: const EdgeInsets.all(10.0),
+                    child: SvgPicture.asset(AssetConstant.iconsMessage,
+                        fit: BoxFit.contain, color: Colors.white),
                   )),
             ),
           ),

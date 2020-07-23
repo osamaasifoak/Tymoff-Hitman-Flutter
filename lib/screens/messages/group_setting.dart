@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/sample_json/json.dart';
@@ -10,7 +11,8 @@ class GroupSetting extends StatefulWidget {
 }
 
 class _GroupSettingState extends State<GroupSetting> {
-  bool isSwitched = false;
+  bool postByAdminSwitch = false;
+  bool shareLinkSwitch = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,15 @@ class _GroupSettingState extends State<GroupSetting> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(
-                            Icons.arrow_back,
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.arrow_back,
+                            ),
                           ),
                         ),
                         Stack(
@@ -105,17 +112,43 @@ class _GroupSettingState extends State<GroupSetting> {
                                       fontSize: 18, color: Colors.grey),
                                 ),
                                 Switch(
-                                  value: isSwitched,
+                                  value: shareLinkSwitch,
                                   onChanged: (value) {
                                     setState(() {
-                                      isSwitched = value;
-                                      print(isSwitched);
+                                      shareLinkSwitch = value;
+                                      print(shareLinkSwitch);
                                     });
                                   },
                                   activeTrackColor: SharedColor.blueAncent,
                                 )
                               ],
                             ),
+                            shareLinkSwitch == true
+                                ? Container(
+                                    color: SharedColor.grey,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.6,
+                                            child: Text(
+                                                "your share able link will be generated here.. "),
+                                          ),
+                                          Text(
+                                            "Share",
+                                            style: TextStyle(
+                                                color: Colors.blue[800]),
+                                          ),
+                                        ],
+                                      ),
+                                    ))
+                                : SizedBox(),
                             Text(
                               "This is the public link for the group. Anyone with this link can join the group and view/post content.",
                               style:
@@ -136,11 +169,11 @@ class _GroupSettingState extends State<GroupSetting> {
                                       fontSize: 18, color: Colors.grey),
                                 ),
                                 Switch(
-                                  value: isSwitched,
+                                  value: postByAdminSwitch,
                                   onChanged: (value) {
                                     setState(() {
-                                      isSwitched = value;
-                                      print(isSwitched);
+                                      postByAdminSwitch = value;
+                                      print(postByAdminSwitch);
                                     });
                                   },
                                   activeTrackColor: SharedColor.blueAncent,
@@ -161,7 +194,7 @@ class _GroupSettingState extends State<GroupSetting> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Container(
-                height: MediaQuery.of(context).size.height,
+                // height: MediaQuery.of(context).size.height,
                 color: Colors.grey[50],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,23 +219,103 @@ class _GroupSettingState extends State<GroupSetting> {
                               fontWeight: FontWeight.bold,
                               color: Colors.black)),
                     ),
-                    Flexible(
-                      child: GridView.builder(
-                        itemCount: SampleJSON.photos.length,
-                        gridDelegate:
-                            new SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3),
-                        physics: BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return Card(
-                            child: ClipRRect(
-                                child: Image(
-                              image: NetworkImage(
-                                  SampleJSON.photos[index]["image"]),
-                              fit: BoxFit.cover,
-                            )),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          height: MediaQuery.of(context).size.height / 2,
+                          color: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: GridView.builder(
+                            itemCount: SampleJSON.photos.length,
+                            gridDelegate:
+                                new SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3),
+                            physics: BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return Card(
+                                child: ClipRRect(
+                                    child: Image(
+                                  image: NetworkImage(
+                                      SampleJSON.photos[index]["image"]),
+                                  fit: BoxFit.cover,
+                                )),
+                              );
+                            },
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white,
+                          alignment: Alignment.bottomRight,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 5.0),
+                          child: Text(
+                            "View all",
+                            style: TextStyle(
+                                fontSize: 14, color: Colors.blue[800]),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4.0, vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            StringConstant.members,
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
+                          Text(
+                            StringConstant.addNewMembers,
+                            style: TextStyle(
+                                fontSize: 14, color: Colors.blue[800]),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height / 2,
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Divider(
+                              color: Colors.grey.withOpacity(0.5),
+                            ),
                           );
                         },
+                        itemCount: SampleJSON.user.length,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    SampleJSON.user[index]["image"])),
+                            title: Text(SampleJSON.user[index]["name"],
+                                style: TextStyle(fontSize: 18)),
+                            trailing: Icon(FontAwesomeIcons.ellipsisH),
+                          );
+                        },
+                      ),
+                    ),
+                    Center(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 10.0),
+                        child: FlatButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          color: Colors.red,
+                          onPressed: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text("Leave group",
+                                style: TextStyle(color: Colors.white)),
+                          ),
+                        ),
                       ),
                     ),
                   ],
