@@ -64,7 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.pushNamed(context, RoutesConstant.chatSetting);
                 },
-                child: Text("chat settings"))
+                child: Text("chat settings")),
+            FlatButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, RoutesConstant.post);
+                },
+                child: Text("Post"))
           ],
         ),
       ),

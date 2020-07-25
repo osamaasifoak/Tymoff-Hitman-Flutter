@@ -7,6 +7,7 @@ class StringConstant {
   static const String members = 'Members';
   static const String addNewMembers = "Add new member";
   static const String newGroup = "New group";
+  static const String copyLink = "Copy link";
   static const String chatSettings = "Chat settings";
   static const String groupSettings = "Group settings";
   static const String notifications = "Notifications";
@@ -17,13 +18,16 @@ class StringConstant {
   static const String messages = "Messages";
   static const String newMessages = "New messages";
   static const String sendMessages = "Send message";
+  static const String send = "Send";
   static const String sendaFile = "Send a file";
+  static const String sharePost = "Share post";
   static const String clickaPhoto = "Click a photo";
   static const String uploadFromGallery = "Upload from gallery";
   static const String document = "Document";
   static const String location = "Location";
   static const String contact = "Contact";
   static const String reportStatus = 'Report Status';
+  static const String reportPost = 'Report Post';
   static const String report = 'Report';
   static const String nudityOrIllegalSubstances =
       'Nudity or illegal substances';
@@ -31,6 +35,7 @@ class StringConstant {
   static const String other = 'Other';
   static const String whyReportStatus = 'Why are you reporting this status?';
   static const String statusHasBeenReported = 'Status has been reported';
+  static const String postHasBeenReported = 'Post has been reported';
   static const String blockedUser = 'Blocked user';
   static const String groupName = 'Group name';
   static const String openToPublic = 'Open to public';
@@ -49,6 +54,7 @@ class RoutesConstant {
   static const String chat = 'chat';
   static const String status = 'status';
   static const String media = 'media';
+  static const String post = 'post';
 }
 
 class AssetConstant {
