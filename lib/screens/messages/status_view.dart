@@ -326,7 +326,7 @@ class _StatusState extends State<Status> {
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Text(
-                      "we recieved your report aaaaajhjasdas  hdgaysgdgashdgaskdh  asdhasdjkas   asjdfjasbdjasbdj",
+                      "We have recieved your report and will look into it shortly. Meanwhile let us know if you also want to block the user from seeing your posts and showing up on your feed.",
                       style: TextStyle(fontSize: 15),
                     ),
                     padding: EdgeInsets.all(15.0),

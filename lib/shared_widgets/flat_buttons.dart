@@ -12,7 +12,7 @@ class SharedFlatButtons extends StatelessWidget {
         elevation: 1.0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
           child: FlatButton(
               onPressed: () {
                 // Navigator.pushNamed(context, RoutesConstant.messages);
@@ -21,7 +21,8 @@ class SharedFlatButtons extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   btnText,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: MediaQuery.of(context).size.width / 28, fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.clip,
                 ),
               )),
         ),

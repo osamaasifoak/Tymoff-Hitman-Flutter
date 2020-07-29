@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:tymoff/routes.dart';
 import 'package:flutter/material.dart';
 import 'constant/constant.dart';
@@ -24,6 +25,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -77,7 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.pushNamed(context, RoutesConstant.chatSetting);
                 },
-                child: Text("chat settings"))
+                child: Text("chat settings")),
+            FlatButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, RoutesConstant.post);
+                },
+                child: Text("Post"))
           ],
         ),
       ),
