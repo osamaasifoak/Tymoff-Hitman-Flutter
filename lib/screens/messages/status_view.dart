@@ -84,8 +84,8 @@ class _StatusState extends State<Status> {
                               child: DropdownButton(
                                 icon: Icon(
                                   FontAwesomeIcons.ellipsisH,
-                                  color: Colors.grey,
-                                  size: 30,
+                                  color: Colors.white,
+                                  size: 16,
                                 ),
                                 items: [
                                   DropdownMenuItem<String>(
@@ -156,7 +156,8 @@ class _StatusState extends State<Status> {
                   alignment: Alignment.center,
                   child: Text(
                     StringConstant.reportStatus,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 20, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(15.0),
                 ),
@@ -165,7 +166,8 @@ class _StatusState extends State<Status> {
                   width: MediaQuery.of(context).size.width,
                   child: Text(
                     StringConstant.nudityOrIllegalSubstances,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -174,7 +176,8 @@ class _StatusState extends State<Status> {
                   width: MediaQuery.of(context).size.width,
                   child: Text(
                     StringConstant.threatOrViolence,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -187,13 +190,12 @@ class _StatusState extends State<Status> {
                     width: MediaQuery.of(context).size.width,
                     child: Text(
                       StringConstant.other,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 16, color: SharedColor.fontColorGrey),
                     ),
                     padding: EdgeInsets.all(10.0),
                   ),
                 ),
-                Divider(),
               ],
             ),
           );
@@ -231,7 +233,7 @@ class _StatusState extends State<Status> {
                       child: Text(
                         StringConstant.reportStatus,
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
+                            fontSize: 20, color: SharedColor.fontColorGrey),
                       ),
                       padding: EdgeInsets.all(15.0),
                     ),
@@ -242,7 +244,8 @@ class _StatusState extends State<Status> {
                 Container(
                   child: Text(
                     StringConstant.whyReportStatus,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -314,7 +317,8 @@ class _StatusState extends State<Status> {
                   alignment: Alignment.center,
                   child: Text(
                     StringConstant.statusHasBeenReported,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 20, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(15.0),
                 ),

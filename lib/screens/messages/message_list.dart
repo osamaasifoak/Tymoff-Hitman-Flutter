@@ -31,13 +31,13 @@ class MessageList extends StatelessWidget {
               leading: CircleAvatar(
                   backgroundImage: NetworkImage(messages[index]["image"])),
               title:
-                  Text(messages[index]["name"], style: TextStyle(fontSize: 18)),
+                  Text(messages[index]["name"], style: TextStyle(fontSize: 16)),
               subtitle: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(messages[index]["name"]),
+                  Text(messages[index]["name"], style: TextStyle(fontSize: 12)),
                   Text(messages[index]["last_time"],
-                      style: TextStyle(fontStyle: FontStyle.italic)),
+                      style: TextStyle(fontStyle: FontStyle.italic, fontSize: 10)),
                 ],
               ),
             ),

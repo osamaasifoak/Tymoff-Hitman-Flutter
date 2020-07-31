@@ -29,7 +29,7 @@ class Messages extends StatelessWidget {
           backgroundColor: Colors.white,
           title: Text(StringConstant.messages,
               style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                   color: Colors.black)),
           centerTitle: true,
@@ -42,7 +42,7 @@ class Messages extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Transform.rotate(
-                   alignment: FractionalOffset.center,
+                  alignment: FractionalOffset.center,
                   angle: -2.2,
                   child: Container(
                       alignment: Alignment.center,
@@ -57,7 +57,9 @@ class Messages extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: SvgPicture.asset(AssetConstant.iconsMessage,
-                            fit: BoxFit.contain, color: Colors.white),
+                            fit: BoxFit.contain,
+                            color: Colors.white,
+                            height: 12),
                       )),
                 ),
               ),

@@ -9,7 +9,7 @@ class StatusList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0),
+      padding: const EdgeInsets.only(left: 10.0, top: 15),
       child: SizedBox(
         height: MediaQuery.of(context).size.height / 6,
         child: ListView.builder(
@@ -46,7 +46,9 @@ class StatusList extends StatelessWidget {
                                     child: Text(
                                       status[index]["name"],
                                       maxLines: 1,
-                                      style: TextStyle(fontSize: 12),
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ))
                             ],
@@ -79,7 +81,9 @@ class StatusList extends StatelessWidget {
                                     child: Text(
                                       status[index]["name"],
                                       maxLines: 1,
-                                      style: TextStyle(fontSize: 12),
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ))
                             ],

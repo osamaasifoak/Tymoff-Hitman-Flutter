@@ -45,16 +45,18 @@ class _ChatState extends State<Chat> {
                 fontWeight: FontWeight.w500,
                 color: Colors.black)),
         actions: <Widget>[
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, RoutesConstant.groupSetting);
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SvgPicture.asset(
-                AssetConstant.setting,
-                fit: BoxFit.contain,
-                height: 20,
+          Flexible(
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, RoutesConstant.groupSetting);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SvgPicture.asset(
+                  AssetConstant.setting,
+                  fit: BoxFit.contain,
+                  height: 14,
+                ),
               ),
             ),
           )
@@ -73,87 +75,94 @@ class _ChatState extends State<Chat> {
                       : 1,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return Column(
-                      children: <Widget>[
-                        SampleJSON.chat[index]["sent"] == "from" &&
-                                widget.userChat["unknown"] == false
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      chatContainer(
-                                          context,
-                                          SampleJSON.chat[index]["message"],
-                                          SampleJSON.chat[index]["media"],
-                                          SharedColor.blueAncent
-                                              .withOpacity(0.3)),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10.0),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Icon(Icons.check,
-                                                size: 12,
-                                                color: SharedColor.blueAncent),
-                                            Text(
-                                                SampleJSON.chat[index]
-                                                    ["last_time"],
-                                                style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize: 10)),
-                                          ],
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 4.0),
+                      child: Column(
+                        children: <Widget>[
+                          SampleJSON.chat[index]["sent"] == "from" &&
+                                  widget.userChat["unknown"] == false
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: <Widget>[
+                                        chatContainer(
+                                            context,
+                                            SampleJSON.chat[index]["message"],
+                                            SampleJSON.chat[index]["media"],
+                                            SharedColor.blueAncent
+                                                .withOpacity(0.3)),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 10.0),
+                                          child: Row(
+                                            children: <Widget>[
+                                              Icon(Icons.check,
+                                                  size: 12,
+                                                  color:
+                                                      SharedColor.blueAncent),
+                                              Text(
+                                                  SampleJSON.chat[index]
+                                                      ["last_time"],
+                                                  style: TextStyle(
+                                                      color: Colors.black87,
+                                                      fontSize: 10)),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        SampleJSON.chat[index]["image"]),
-                                  ),
-                                ],
-                              )
-                            : Row(
-                                children: <Widget>[
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        SampleJSON.chat[index]["image"]),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      chatContainer(
-                                          context,
-                                          SampleJSON.chat[index]["message"],
-                                          SampleJSON.chat[index]["media"],
-                                          SharedColor.grey),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10.0),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Text(
-                                                SampleJSON.chat[index]
-                                                    ["last_time"],
-                                                style: TextStyle(
-                                                    color: Colors.black87,
-                                                    fontSize: 10)),
-                                            Icon(Icons.check,
-                                                size: 12,
-                                                color: SharedColor.blueAncent),
-                                          ],
+                                      ],
+                                    ),
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          SampleJSON.chat[index]["image"]),
+                                    ),
+                                  ],
+                                )
+                              : Row(
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          SampleJSON.chat[index]["image"]),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        chatContainer(
+                                            context,
+                                            SampleJSON.chat[index]["message"],
+                                            SampleJSON.chat[index]["media"],
+                                            SharedColor.grey),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
+                                          child: Row(
+                                            children: <Widget>[
+                                              Text(
+                                                  SampleJSON.chat[index]
+                                                      ["last_time"],
+                                                  style: TextStyle(
+                                                      color: Colors.black87,
+                                                      fontSize: 10)),
+                                              Icon(Icons.check,
+                                                  size: 12,
+                                                  color:
+                                                      SharedColor.blueAncent),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                        widget.userChat["unknown"] == true
-                            ? warningButtons()
-                            : Container()
-                      ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                          widget.userChat["unknown"] == true
+                              ? warningButtons()
+                              : Container()
+                        ],
+                      ),
                     );
                   }),
             ),
@@ -195,8 +204,8 @@ class _ChatState extends State<Chat> {
 
   Widget inputTextFieldChat(context) {
     return Container(
-      decoration:
-          new BoxDecoration(border: Border(top: BorderSide(width: 0.5))),
+      decoration: new BoxDecoration(
+          border: Border(top: BorderSide(width: 0.5, color: SharedColor.grey))),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
@@ -211,7 +220,8 @@ class _ChatState extends State<Chat> {
                       shape: BoxShape.circle, color: Colors.black),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.attach_file, color: Colors.white),
+                    child:
+                        Icon(Icons.attach_file, color: Colors.white, size: 18),
                   )),
             ),
           ),
@@ -234,19 +244,19 @@ class _ChatState extends State<Chat> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   alignment: Alignment.center,
-                  height: MediaQuery.of(context).size.height / 16,
+                  height: MediaQuery.of(context).size.height / 20,
                   decoration: new BoxDecoration(
                     boxShadow: [
-                      BoxShadow(color: Colors.lightBlueAccent, blurRadius: 3.0)
+                      BoxShadow(color: SharedColor.grey, blurRadius: 3.0)
                     ],
-                    color: Colors.lightBlueAccent,
+                    color: SharedColor.blueAncent,
                     shape: BoxShape.circle,
                     // borderRadius: BorderRadius.circular(50)
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: SvgPicture.asset(AssetConstant.iconsMessage,
-                        fit: BoxFit.contain, color: Colors.white),
+                        fit: BoxFit.contain, color: Colors.white, height: 14),
                   )),
             ),
           ),
@@ -323,44 +333,49 @@ class _ChatState extends State<Chat> {
   }
 
   Widget warningButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            // width: MediaQuery.of(context).size.width * 0.8,
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              color: SharedColor.redBtnColor,
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(StringConstant.reportSpam,
-                    style: TextStyle(fontSize: 16, color: Colors.white)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: 50,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                color: SharedColor.redBtnColor,
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(StringConstant.reportSpam,
+                      style: TextStyle(fontSize: 14, color: Colors.white)),
+                ),
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            // width: MediaQuery.of(context).size.width * 0.8,
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              color: SharedColor.redBtnColor,
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(StringConstant.blockedUser,
-                    style: TextStyle(fontSize: 16, color: Colors.white)),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: 50,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                color: SharedColor.redBtnColor,
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(StringConstant.blockUser,
+                      style: TextStyle(fontSize: 14, color: Colors.white)),
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }
