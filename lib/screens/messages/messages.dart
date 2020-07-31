@@ -15,62 +15,121 @@ class Messages extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        appBar: AppBar(
-          elevation: 0.0,
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-          ),
-          backgroundColor: Colors.white,
-          title: Text(StringConstant.messages,
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black)),
-          centerTitle: true,
-          actions: <Widget>[
-            InkWell(
-              onTap: () {
-                scaffoldKey.currentState
-                    .showBottomSheet((context) => BottomSheetModalNewMessage());
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Transform.rotate(
-                  alignment: FractionalOffset.center,
-                  angle: -2.2,
-                  child: Container(
-                      alignment: Alignment.center,
-                      decoration: new BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.lightBlueAccent, blurRadius: 3.0)
-                        ],
-                        shape: BoxShape.circle,
-                        color: Colors.lightBlueAccent,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: SvgPicture.asset(AssetConstant.iconsMessage,
-                            fit: BoxFit.contain,
-                            color: Colors.white,
-                            height: 12),
-                      )),
-                ),
-              ),
-            )
-          ],
-        ),
+        // extendBodyBehindAppBar: true,
+        // appBar: AppBar(
+        //   elevation: 0.0,
+        //   leading: InkWell(
+        //     onTap: () {
+        //       Navigator.pop(context);
+        //     },
+        //     child: Icon(
+        //       Icons.arrow_back,
+        //       color: Colors.black,
+        //     ),
+        //   ),
+        //   backgroundColor: Colors.white,
+        //   title: Text(StringConstant.messages,
+        //       style: TextStyle(
+        //           fontSize: 22,
+        //           fontWeight: FontWeight.w500,
+        //           color: Colors.black)),
+        //   centerTitle: true,
+        //   actions: <Widget>[
+        //     InkWell(
+        //       onTap: () {
+        //         scaffoldKey.currentState.showBottomSheet(
+        //             (context) => BottomSheetModalNewMessage(),
+        //             backgroundColor: Colors.black,
+        //             elevation: 20.0);
+        //       },
+        //       child: Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Transform.rotate(
+        //           alignment: FractionalOffset.center,
+        //           angle: -2.2,
+        //           child: Container(
+        //               alignment: Alignment.center,
+        //               decoration: new BoxDecoration(
+        //                 boxShadow: [
+        //                   BoxShadow(
+        //                       color: Colors.lightBlueAccent, blurRadius: 3.0)
+        //                 ],
+        //                 shape: BoxShape.circle,
+        //                 color: Colors.lightBlueAccent,
+        //               ),
+        //               child: Padding(
+        //                 padding: const EdgeInsets.all(10.0),
+        //                 child: SvgPicture.asset(AssetConstant.iconsMessage,
+        //                     fit: BoxFit.contain,
+        //                     color: Colors.white,
+        //                     height: 12),
+        //               )),
+        //         ),
+        //       ),
+        //     )
+        //   ],
+        // ),
         body: Container(
           height: MediaQuery.of(context).size.height,
           color: Colors.white,
           child: Column(
             children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Text(StringConstant.messages,
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black)),
+                  InkWell(
+                    onTap: () {
+                      scaffoldKey.currentState.showBottomSheet(
+                          (context) => BottomSheetModalNewMessage(),
+                          backgroundColor: Colors.transparent.withOpacity(0.90),
+                          elevation: 10.0);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Transform.rotate(
+                        alignment: FractionalOffset.center,
+                        angle: -2.2,
+                        child: Container(
+                            alignment: Alignment.center,
+                            decoration: new BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.lightBlueAccent,
+                                    blurRadius: 3.0)
+                              ],
+                              shape: BoxShape.circle,
+                              color: Colors.lightBlueAccent,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: SvgPicture.asset(
+                                  AssetConstant.iconsMessage,
+                                  fit: BoxFit.contain,
+                                  color: Colors.white,
+                                  height: 12),
+                            )),
+                      ),
+                    ),
+                  )
+                ],
+              ),
               SearchBar(),
               SampleJSON.messages.length != 0
                   ? StatusList(

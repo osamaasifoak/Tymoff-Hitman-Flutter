@@ -17,8 +17,8 @@ class _ChatSettingsState extends State<ChatSettings> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar:
-              SharedWidget.simpleAppBar("Hitman", context, Icons.arrow_back,Colors.grey[200].withOpacity(0.2)),
+          appBar: SharedWidget.simpleAppBar("Hitman", context, Icons.arrow_back,
+              Colors.grey[200].withOpacity(0.2)),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,6 +77,15 @@ class _ChatSettingsState extends State<ChatSettings> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0, vertical: 15),
+                          child: Text(StringConstant.media,
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black)),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -86,15 +95,6 @@ class _ChatSettingsState extends State<ChatSettings> {
                               SharedFlatButtons(btnText: StringConstant.videos),
                             ],
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15.0, vertical: 15),
-                          child: Text(StringConstant.media,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
                         ),
                         Flexible(
                           child: GridView.builder(

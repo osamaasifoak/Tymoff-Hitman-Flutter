@@ -19,7 +19,8 @@ class ReportBottomModals {
                   alignment: Alignment.center,
                   child: Text(
                     StringConstant.reportPost,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 18, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(15.0),
                 ),
@@ -28,7 +29,8 @@ class ReportBottomModals {
                   width: MediaQuery.of(context).size.width,
                   child: Text(
                     StringConstant.nudityOrIllegalSubstances,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -37,7 +39,8 @@ class ReportBottomModals {
                   width: MediaQuery.of(context).size.width,
                   child: Text(
                     StringConstant.threatOrViolence,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -50,8 +53,8 @@ class ReportBottomModals {
                     width: MediaQuery.of(context).size.width,
                     child: Text(
                       StringConstant.other,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 16, color: SharedColor.fontColorGrey),
                     ),
                     padding: EdgeInsets.all(10.0),
                   ),
@@ -94,7 +97,7 @@ class ReportBottomModals {
                       child: Text(
                         StringConstant.reportPost,
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
+                            fontSize: 18, color: SharedColor.fontColorGrey),
                       ),
                       padding: EdgeInsets.all(15.0),
                     ),
@@ -105,7 +108,8 @@ class ReportBottomModals {
                 Container(
                   child: Text(
                     StringConstant.whyReportStatus,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -177,7 +181,8 @@ class ReportBottomModals {
                   alignment: Alignment.center,
                   child: Text(
                     StringConstant.postHasBeenReported,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 18, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(15.0),
                 ),

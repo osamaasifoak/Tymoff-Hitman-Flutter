@@ -112,7 +112,8 @@ class StatusList extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     StringConstant.sendaFile,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 18, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(15.0),
                 ),
@@ -120,7 +121,8 @@ class StatusList extends StatelessWidget {
                 Container(
                   child: Text(
                     StringConstant.clickaPhoto,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -128,7 +130,8 @@ class StatusList extends StatelessWidget {
                 Container(
                   child: Text(
                     StringConstant.uploadFromGallery,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -141,13 +144,12 @@ class StatusList extends StatelessWidget {
                   child: Container(
                     child: Text(
                       "temporary button",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 16, color: SharedColor.fontColorGrey),
                     ),
                     padding: EdgeInsets.all(10.0),
                   ),
                 ),
-                Divider(),
               ],
             ),
           );
