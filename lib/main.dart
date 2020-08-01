@@ -1,6 +1,9 @@
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:tymoff/provider/search_provider.dart';
 import 'package:tymoff/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:tymoff/screens/messages/messages.dart';
 import 'constant/constant.dart';
 import 'package:pubnub/pubnub.dart';
 
@@ -26,18 +29,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MaterialApp(
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          appBarTheme: AppBarTheme(
-              textTheme: TextTheme(headline1: TextStyle(color: Colors.black)))),
-      onGenerateRoute: (RouteSettings settings) {
-        return ongenerateRoutes(settings);
-      },
-      debugShowCheckedModeBanner: false,
-      initialRoute: RoutesConstant.home,
-      home: MyHomePage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => SearchProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            appBarTheme: AppBarTheme(
+                textTheme:
+                    TextTheme(headline1: TextStyle(color: Colors.black)))),
+        onGenerateRoute: (RouteSettings settings) {
+          return ongenerateRoutes(settings);
+        },
+        debugShowCheckedModeBanner: false,
+        initialRoute: RoutesConstant.messages,
+        home: Messages(),
+      ),
     );
   }
 }

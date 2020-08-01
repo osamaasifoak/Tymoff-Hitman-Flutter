@@ -6,6 +6,8 @@ class StringConstant {
   static const String motivationTips = "Motivation tips";
   static const String members = 'Members';
   static const String addNewMembers = "Add new member";
+  static const String addMembers = "Add member";
+  static const String add = "Add";
   static const String newGroup = "New group";
   static const String copyLink = "Copy link";
   static const String chatSettings = "Chat settings";

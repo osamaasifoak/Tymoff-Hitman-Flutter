@@ -1,6 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tymoff/constant/constant.dart';
 import '../../constant/shared_color.dart';
 import '../../sample_json/json.dart';
@@ -48,7 +49,14 @@ class _ChatState extends State<Chat> {
           Flexible(
             child: InkWell(
               onTap: () {
-                Navigator.pushNamed(context, RoutesConstant.groupSetting);
+                print(widget.userChat["channel"]);
+                if (widget.userChat["channel"] == "group") {
+                  Navigator.pushNamed(context, RoutesConstant.groupSetting);
+                } else if (widget.userChat["channel"] == "broadcast") {
+                  Navigator.pushNamed(context, RoutesConstant.broadcastSetting);
+                } else if (widget.userChat["channel"] == "single") {
+                  Navigator.pushNamed(context, RoutesConstant.chatSetting);
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -281,7 +289,8 @@ class _ChatState extends State<Chat> {
                   alignment: Alignment.center,
                   child: Text(
                     StringConstant.sendaFile,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 18, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(15.0),
                 ),
@@ -289,7 +298,8 @@ class _ChatState extends State<Chat> {
                 Container(
                   child: Text(
                     StringConstant.clickaPhoto,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -297,7 +307,8 @@ class _ChatState extends State<Chat> {
                 Container(
                   child: Text(
                     StringConstant.uploadFromGallery,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -305,7 +316,8 @@ class _ChatState extends State<Chat> {
                 Container(
                   child: Text(
                     StringConstant.document,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -313,7 +325,8 @@ class _ChatState extends State<Chat> {
                 Container(
                   child: Text(
                     StringConstant.location,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
@@ -321,11 +334,11 @@ class _ChatState extends State<Chat> {
                 Container(
                   child: Text(
                     StringConstant.contact,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 16, color: SharedColor.fontColorGrey),
                   ),
                   padding: EdgeInsets.all(10.0),
                 ),
-                Divider(),
               ],
             ),
           );

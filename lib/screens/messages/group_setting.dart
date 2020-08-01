@@ -200,6 +200,15 @@ class _GroupSettingState extends State<GroupSetting> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 15),
+                      child: Text(StringConstant.media,
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black)),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -209,15 +218,6 @@ class _GroupSettingState extends State<GroupSetting> {
                           SharedFlatButtons(btnText: StringConstant.videos),
                         ],
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15.0, vertical: 15),
-                      child: Text(StringConstant.media,
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black)),
                     ),
                     Column(
                       children: <Widget>[
