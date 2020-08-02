@@ -352,9 +352,9 @@ class _ChatState extends State<Chat> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2),
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: 50,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
@@ -370,9 +370,9 @@ class _ChatState extends State<Chat> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 2),
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.45,
               height: 50,
               child: FlatButton(
                 shape: RoundedRectangleBorder(

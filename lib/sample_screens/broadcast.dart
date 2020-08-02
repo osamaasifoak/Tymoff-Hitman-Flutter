@@ -224,19 +224,34 @@ class BottomSheetModalAddNew extends StatelessWidget {
                     );
                   },
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15.0, vertical: 10.0),
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    color: SharedColor.blueAncent,
-                    onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(StringConstant.add,
-                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: SharedColor.blueAncent,
+                          offset: Offset(1.0, 3.0),
+                          blurRadius: 10.0,
+                        ),
+                      ],
+                    ),
+                    child: FlatButton(
+                      color: SharedColor.blueAncent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      onPressed: () {},
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(StringConstant.add,
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18)),
+                      ),
                     ),
                   ),
                 ),

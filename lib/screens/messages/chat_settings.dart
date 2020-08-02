@@ -96,23 +96,74 @@ class _ChatSettingsState extends State<ChatSettings> {
                             ],
                           ),
                         ),
-                        Flexible(
-                          child: GridView.builder(
-                            itemCount: SampleJSON.photos.length,
-                            gridDelegate:
-                                new SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3),
-                            physics: BouncingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return Card(
-                                child: ClipRRect(
-                                    child: Image(
-                                  image: NetworkImage(
-                                      SampleJSON.photos[index]["image"]),
-                                  fit: BoxFit.cover,
-                                )),
-                              );
-                            },
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              height: MediaQuery.of(context).size.height / 2,
+                              color: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: GridView.builder(
+                                itemCount: SampleJSON.photos.length,
+                                gridDelegate:
+                                    new SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3),
+                                physics: BouncingScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return Card(
+                                    child: ClipRRect(
+                                        child: Image(
+                                      image: NetworkImage(
+                                          SampleJSON.photos[index]["image"]),
+                                      fit: BoxFit.cover,
+                                    )),
+                                  );
+                                },
+                              ),
+                            ),
+                            Container(
+                              color: Colors.white,
+                              alignment: Alignment.bottomRight,
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 5.0),
+                              child: Text(
+                                "View all",
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.blue[800]),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            color: SharedColor.redBtnColor,
+                            onPressed: () {},
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(StringConstant.report + " Hitman",
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 15),
+                        Container(
+                          height: 50,
+                          width: MediaQuery.of(context).size.width,
+                          child: FlatButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            color: SharedColor.redBtnColor,
+                            onPressed: () {},
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text("Block Hitman",
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.white)),
+                            ),
                           ),
                         ),
                       ],
@@ -122,6 +173,53 @@ class _ChatSettingsState extends State<ChatSettings> {
               ],
             ),
           )),
+    );
+  }
+
+  Widget warningButtons() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: 50,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                color: SharedColor.redBtnColor,
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(StringConstant.reportSpam,
+                      style: TextStyle(fontSize: 14, color: Colors.white)),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: 50,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                color: SharedColor.redBtnColor,
+                onPressed: () {},
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(StringConstant.blockUser,
+                      style: TextStyle(fontSize: 14, color: Colors.white)),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
