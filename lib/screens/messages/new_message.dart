@@ -10,7 +10,7 @@ class BottomSheetModalNewMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 80),
+      padding: const EdgeInsets.only(top: 40),
       child: Container(
         decoration: new BoxDecoration(
             color: Colors.white,
@@ -74,28 +74,52 @@ class BottomSheetModalNewMessage extends StatelessWidget {
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: <Widget>[
-                ListView.separated(
-                  separatorBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: Divider(
-                        color: Colors.grey.withOpacity(0.5),
-                      ),
-                    );
-                  },
-                  itemCount: SampleJSON.user.length,
-                  physics: BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(SampleJSON.user[index]["image"])),
-                      title: Text(SampleJSON.user[index]["name"],
-                          style: TextStyle(fontSize: 18)),
-                      trailing: Icon(FontAwesomeIcons.circle,
-                          color: SharedColor.grey),
-                    );
-                  },
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: SingleChildScrollView(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          for (int index = 0; index < 5; index++)
+                            ListTile(
+                              leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      SampleJSON.user[index]["image"])),
+                              title: Text(SampleJSON.user[index]["name"],
+                                  style: TextStyle(fontSize: 18)),
+                              trailing: Icon(FontAwesomeIcons.circle,
+                                  color: SharedColor.grey),
+                            ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15.0, vertical: 10.0),
+                            child: Text("ALL CONTACTS",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500)),
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height,
+                            child: ListView.builder(
+                              itemCount: SampleJSON.user.length,
+                              shrinkWrap: true,
+                              primary: true,
+                              physics: BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  leading: CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                          SampleJSON.user[index]["image"])),
+                                  title: Text(SampleJSON.user[index]["name"],
+                                      style: TextStyle(fontSize: 18)),
+                                  trailing: Icon(FontAwesomeIcons.circle,
+                                      color: SharedColor.grey),
+                                );
+                              },
+                            ),
+                          ),
+                        ]),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(

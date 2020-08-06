@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:tymoff/constant/constant.dart';
+import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/screens/messages/message_list.dart';
 import 'package:tymoff/screens/messages/status_list.dart';
@@ -97,9 +100,16 @@ class Messages extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       scaffoldKey.currentState.showBottomSheet(
-                          (context) => BottomSheetModalNewMessage(),
-                          backgroundColor: Colors.transparent.withOpacity(0.90),
-                          elevation: 10.0);
+                        (context) => Container(
+                          child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              child: BottomSheetModalNewMessage()),
+                        ),
+
+                        // backgroundColor:
+                        //     SharedColor.backgroundColorblur.withOpacity(0.2),
+                        // elevation: 10.0
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

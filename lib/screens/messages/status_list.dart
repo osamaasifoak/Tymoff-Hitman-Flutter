@@ -1,3 +1,4 @@
+import 'package:fdottedline/fdottedline.dart';
 import 'package:flutter/material.dart';
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
@@ -29,12 +30,25 @@ class StatusList extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(2.0),
-                                child: CircleAvatar(
-                                  radius: 37,
-                                  backgroundColor: SharedColor.blueAncent,
-                                  child: CircleAvatar(
-                                    radius: 35,
-                                    backgroundColor: Colors.white,
+                                child: FDottedLine(
+                                  color: SharedColor.blueAncent,
+                                  corner: FDottedLineCorner(
+                                    leftTopCorner: 80,
+                                    rightTopCorner: 80,
+                                    rightBottomCorner: 80,
+                                    leftBottomCorner: 80,
+                                  ),
+                                  child: Container(
+                                    height: 77,
+                                    width: 77,
+                                    decoration: new BoxDecoration(
+                                      color: SharedColor.blueAncent
+                                          .withOpacity(0.2),
+                                      shape: BoxShape.circle,
+
+                                      // borderRadius:
+                                      //     BorderRadius.circular(80)
+                                    ),
                                     child: Icon(Icons.add,
                                         color: SharedColor.blueAncent),
                                   ),

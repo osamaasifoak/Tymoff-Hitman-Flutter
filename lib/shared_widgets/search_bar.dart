@@ -19,12 +19,12 @@ class _SearchBarState extends State<SearchBar> {
       child: SizedBox(
         height: MediaQuery.of(context).size.height / 15,
         child: Card(
-          color: SharedColor.grey,
+          color: SharedColor.grey.withOpacity(0.5),
           elevation: 0.0,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: TextFormField(
                 controller: _searchController,
                 decoration: new InputDecoration(
@@ -33,7 +33,8 @@ class _SearchBarState extends State<SearchBar> {
                     ),
                     prefixIcon: Icon(
                       Icons.search,
-                      size: 30,
+                      size: 25,
+                      color: Colors.grey.withOpacity(0.8),
                     ),
                     border: InputBorder.none),
                 onTap: () {
