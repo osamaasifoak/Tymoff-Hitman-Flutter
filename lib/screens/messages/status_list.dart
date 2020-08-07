@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/screens/messages/new_message.dart';
+import 'package:tymoff/shared_widgets/blurry_background.dart';
 
 class StatusList extends StatelessWidget {
   final status;
@@ -132,68 +133,6 @@ class StatusList extends StatelessWidget {
       ),
     );
   }
-
-  bottomSheetAddStatus(context) {
-    showModalBottomSheet(
-        context: context,
-        barrierColor: SharedColor.backgroundColorblur.withOpacity(0.6),
-        elevation: 50.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
-        ),
-        builder: (context) {
-          return SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    StringConstant.createAstatus,
-                    style: TextStyle(
-                        fontSize: 18, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(15.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.clickaPhoto,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.uploadFromGallery,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-                Divider(),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, RoutesConstant.status,
-                        arguments: 1);
-                  },
-                  child: Container(
-                    child: Text(
-                      "temporary button",
-                      style: TextStyle(
-                          fontSize: 16, color: SharedColor.fontColorGrey),
-                    ),
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-  }
 }
 
 class BottomSheetModalAddStatus extends StatelessWidget {
@@ -248,26 +187,4 @@ class BottomSheetModalAddStatus extends StatelessWidget {
   }
 }
 
-class BlurryEffect extends StatelessWidget {
-  final double opacity;
-  final double blurry;
-  final Color shade;
 
-  BlurryEffect(this.opacity, this.blurry, this.shade);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ClipRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blurry, sigmaY: blurry),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(color: shade.withOpacity(opacity)),
-          ),
-        ),
-      ),
-    );
-  }
-}

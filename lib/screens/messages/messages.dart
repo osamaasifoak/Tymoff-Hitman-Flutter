@@ -2,9 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:tymoff/constant/constant.dart';
+import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/screens/messages/message_list.dart';
 import 'package:tymoff/screens/messages/status_list.dart';
+import 'package:tymoff/shared_widgets/blurry_background.dart';
 import 'package:tymoff/shared_widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'new_message.dart';
@@ -101,15 +103,23 @@ class Messages extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         scaffoldKey.currentState.showBottomSheet(
-                          (context) => Container(
-                            child: BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                                child: BottomSheetModalNewMessage()),
+                          (context) => Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              BlurryEffect(
+                                  0.5, 5, SharedColor.backgroundColorblur),
+                              Container(
+                                  decoration: new BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20.0),
+                                        topRight: Radius.circular(20.0)),
+                                    color: Colors.transparent,
+                                  ),
+                                  padding: const EdgeInsets.only(top: 80.0,left: 2,right: 2),
+                                  child: BottomSheetModalNewMessage()),
+                            ],
                           ),
-
-                          // backgroundColor:
-                          //     SharedColor.backgroundColorblur.withOpacity(0.2),
-                          // elevation: 10.0
+                          backgroundColor: Colors.transparent,
                         );
                       },
                       child: Padding(

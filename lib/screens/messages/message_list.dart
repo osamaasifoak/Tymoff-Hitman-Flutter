@@ -30,9 +30,11 @@ class MessageList extends StatelessWidget {
   }
 
   Widget _messageList(context, index) {
+    final searchProvider = Provider.of<SearchProvider>(context, listen: false);
     return InkWell(
       enableFeedback: true,
       onTap: () {
+        searchProvider.searchString("");
         Navigator.pushNamed(context, RoutesConstant.chat,
             arguments: messages[index]);
       },

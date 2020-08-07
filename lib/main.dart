@@ -6,23 +6,22 @@ import 'package:tymoff/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:tymoff/screens/messages/messages.dart';
 import 'constant/constant.dart';
-import 'package:pubnub/pubnub.dart';
 
 void main() {
-  final pubnub = PubNub(
-      defaultKeyset: Keyset(
-          subscribeKey: 'sub-c-be1b2188-d15a-11ea-b3f2-c27cb65b13f4',
-          publishKey: 'pub-c-a747742d-f63d-45ad-9926-921884c0b1c9',
-          uuid:
-              UUID('sec-c-YzJhMjdhZmItOTNiMi00Mzc1LTg2MWMtNGExMzQ2ZTgyMmFk')));
+  // final pubnub = PubNub(
+  //     defaultKeyset: Keyset(
+  //         subscribeKey: 'sub-c-be1b2188-d15a-11ea-b3f2-c27cb65b13f4',
+  //         publishKey: 'pub-c-a747742d-f63d-45ad-9926-921884c0b1c9',
+  //         uuid:
+  //             UUID('sec-c-YzJhMjdhZmItOTNiMi00Mzc1LTg2MWMtNGExMzQ2ZTgyMmFk')));
 
-  var myChannel = pubnub.channel('my_channel');
-  pubnub.subscribe(channels: {'myChannel'}, withPresence: true);
-  print(myChannel.name);
-  myChannel.subscribe().then((value) => value.messages.listen((event) {
-        print(event.payload);
-      }));
-  myChannel.publish({'this is first message to': 'world'});
+  // var myChannel = pubnub.channel('my_channel');
+  // pubnub.subscribe(channels: {'myChannel'}, withPresence: true);
+  // print(myChannel.name);
+  // myChannel.subscribe().then((value) => value.messages.listen((event) {
+  //       print(event.payload);
+  //     }));
+  // myChannel.publish({'this is first message to': 'world'});
   runApp(MyApp());
 }
 

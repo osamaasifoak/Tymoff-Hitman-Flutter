@@ -347,7 +347,7 @@ class SampleJSON {
       "view": false,
       "last_message": "hey what's up?",
       "last_time": "16 min ago",
-      "message": "you there?",
+      "message": "hi?",
       "sent": "from",
       "media": "",
       "image":

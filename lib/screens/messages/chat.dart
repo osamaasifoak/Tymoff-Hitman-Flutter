@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:tymoff/constant/constant.dart';
+import 'package:tymoff/provider/search_provider.dart';
+import 'package:tymoff/shared_widgets/blurry_background.dart';
 import '../../constant/shared_color.dart';
 import '../../sample_json/json.dart';
 import '../../shared_widgets/search_bar.dart';
@@ -17,166 +20,213 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  dynamic chat =  SampleJSON.chat;
   @override
   void initState() {
     super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        title: Text(
-            widget.userChat["unknown"] == false
-                ? widget.userChat["name"]
-                : widget.userChat["contact"],
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Colors.black)),
-        actions: <Widget>[
-          Flexible(
-            child: InkWell(
-              onTap: () {
-                print(widget.userChat["channel"]);
-                if (widget.userChat["channel"] == "group") {
-                  Navigator.pushNamed(context, RoutesConstant.groupSetting);
-                } else if (widget.userChat["channel"] == "broadcast") {
-                  Navigator.pushNamed(context, RoutesConstant.broadcastSetting);
-                } else if (widget.userChat["channel"] == "single") {
-                  Navigator.pushNamed(context, RoutesConstant.chatSetting);
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SvgPicture.asset(
-                  AssetConstant.setting,
-                  fit: BoxFit.contain,
-                  height: 14,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
+      key: scaffoldKey,
+      // appBar: AppBar(
+      //   elevation: 0.0,
+      //   leading: InkWell(
+      //     onTap: () {
+      //       Navigator.pop(context);
+      //     },
+      //     child: Icon(
+      //       Icons.arrow_back,
+      //       color: Colors.black,
+      //     ),
+      //   ),
+      //   backgroundColor: Colors.white,
+      //   title: Text(
+      //       widget.userChat["unknown"] == false
+      //           ? widget.userChat["name"]
+      //           : widget.userChat["contact"],
+      //       style: TextStyle(
+      //           fontSize: 20,
+      //           fontWeight: FontWeight.w500,
+      //           color: Colors.black)),
+      //   actions: <Widget>[
+      //     Flexible(
+      //       child: InkWell(
+      //         onTap: () {
+      //           print(widget.userChat["channel"]);
+      //           if (widget.userChat["channel"] == "group") {
+      //             Navigator.pushNamed(context, RoutesConstant.groupSetting);
+      //           } else if (widget.userChat["channel"] == "broadcast") {
+      //             Navigator.pushNamed(context, RoutesConstant.broadcastSetting);
+      //           } else if (widget.userChat["channel"] == "single") {
+      //             Navigator.pushNamed(context, RoutesConstant.chatSetting);
+      //           }
+      //         },
+      //         child: Padding(
+      //           padding: const EdgeInsets.all(10.0),
+      //           child: SvgPicture.asset(
+      //             AssetConstant.setting,
+      //             fit: BoxFit.contain,
+      //             height: 14,
+      //           ),
+      //         ),
+      //       ),
+      //     )
+      //   ],
+      // ),
       body: Container(
         height: MediaQuery.of(context).size.height,
+        padding: const EdgeInsets.only(top: 30),
         color: Colors.white,
         child: Column(
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                      widget.userChat["unknown"] == false
+                          ? widget.userChat["name"]
+                          : widget.userChat["contact"],
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black)),
+                  Flexible(
+                    child: InkWell(
+                      onTap: () {
+                        print(widget.userChat["channel"]);
+                        if (widget.userChat["channel"] == "group") {
+                          Navigator.pushNamed(
+                              context, RoutesConstant.groupSetting);
+                        } else if (widget.userChat["channel"] == "broadcast") {
+                          Navigator.pushNamed(
+                              context, RoutesConstant.broadcastSetting);
+                        } else if (widget.userChat["channel"] == "single") {
+                          Navigator.pushNamed(
+                              context, RoutesConstant.chatSetting);
+                        }
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: SvgPicture.asset(
+                          AssetConstant.setting,
+                          fit: BoxFit.contain,
+                          height: 14,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
             SearchBar(),
             Expanded(
-              child: ListView.builder(
-                  itemCount: widget.userChat["unknown"] == false
-                      ? SampleJSON.chat.length
-                      : 1,
-                  physics: BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15.0, vertical: 4.0),
-                      child: Column(
-                        children: <Widget>[
-                          SampleJSON.chat[index]["sent"] == "from" &&
-                                  widget.userChat["unknown"] == false
-                              ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        chatContainer(
-                                            context,
-                                            SampleJSON.chat[index]["message"],
-                                            SampleJSON.chat[index]["media"],
-                                            SharedColor.blueAncent
-                                                .withOpacity(0.3)),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 10.0),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Icon(Icons.check,
-                                                  size: 12,
-                                                  color:
-                                                      SharedColor.blueAncent),
-                                              Text(
-                                                  SampleJSON.chat[index]
-                                                      ["last_time"],
-                                                  style: TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 10)),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          SampleJSON.chat[index]["image"]),
-                                    ),
-                                  ],
-                                )
-                              : Row(
-                                  children: <Widget>[
-                                    CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          SampleJSON.chat[index]["image"]),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        chatContainer(
-                                            context,
-                                            SampleJSON.chat[index]["message"],
-                                            SampleJSON.chat[index]["media"],
-                                            SharedColor.grey),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 10.0),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Text(
-                                                  SampleJSON.chat[index]
-                                                      ["last_time"],
-                                                  style: TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 10)),
-                                              Icon(Icons.check,
-                                                  size: 12,
-                                                  color:
-                                                      SharedColor.blueAncent),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                          widget.userChat["unknown"] == true
-                              ? warningButtons()
-                              : Container()
-                        ],
-                      ),
-                    );
-                  }),
-            ),
+      child: ListView.builder(
+          itemCount:
+              widget.userChat["unknown"] == false ? chat.length : 1,
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+             return Consumer<SearchProvider>(builder: (context, searching, child) {
+            return searching.searchingFilter == null ||
+                    searching.searchingFilter == ""
+                ? chatSection(context, index)
+                :  chat[index]["message"]
+                        .toLowerCase()
+                        .contains(searching.searchingFilter.toLowerCase())
+                    ? chatSection(context, index)
+                    : Container();
+          }); })),
             inputTextFieldChat(context),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget chatSection(context, index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 4.0),
+      child: Column(
+        children: <Widget>[
+          SampleJSON.chat[index]["sent"] == "from" &&
+                  widget.userChat["unknown"] == false
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        chatContainer(
+                            context,
+                            SampleJSON.chat[index]["message"],
+                            SampleJSON.chat[index]["media"],
+                            SharedColor.blueAncent.withOpacity(0.3)),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(Icons.check,
+                                  size: 12, color: SharedColor.blueAncent),
+                              Text(SampleJSON.chat[index]["last_time"],
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 10)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          NetworkImage(SampleJSON.chat[index]["image"]),
+                    ),
+                  ],
+                )
+              : Row(
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage:
+                          NetworkImage(SampleJSON.chat[index]["image"]),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        chatContainer(
+                            context,
+                            SampleJSON.chat[index]["message"],
+                            SampleJSON.chat[index]["media"],
+                            SharedColor.grey),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text(SampleJSON.chat[index]["last_time"],
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 10)),
+                              Icon(Icons.check,
+                                  size: 12, color: SharedColor.blueAncent),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+          widget.userChat["unknown"] == true ? warningButtons() : Container()
+        ],
       ),
     );
   }
@@ -219,7 +269,24 @@ class _ChatState extends State<Chat> {
         children: <Widget>[
           InkWell(
             onTap: () {
-              bottomSheetAttachment(context);
+              scaffoldKey.currentState.showBottomSheet(
+                (context) => Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    BlurryEffect(0.5, 5, SharedColor.backgroundColorblur),
+                    Container(
+                        decoration: new BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20.0),
+                              topRight: Radius.circular(20.0)),
+                          color: Colors.transparent,
+                        ),
+                        padding: const EdgeInsets.only(top: 80.0),
+                        child: BottomSheetAttachment()),
+                  ],
+                ),
+                backgroundColor: Colors.transparent,
+              );
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -273,78 +340,6 @@ class _ChatState extends State<Chat> {
     );
   }
 
-  bottomSheetAttachment(context) {
-    showModalBottomSheet(
-        context: context,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
-        ),
-        builder: (builder) {
-          return SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    StringConstant.sendaFile,
-                    style: TextStyle(
-                        fontSize: 18, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(15.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.clickaPhoto,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.uploadFromGallery,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.document,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.location,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-                Divider(),
-                Container(
-                  child: Text(
-                    StringConstant.contact,
-                    style: TextStyle(
-                        fontSize: 16, color: SharedColor.fontColorGrey),
-                  ),
-                  padding: EdgeInsets.all(10.0),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
   Widget warningButtons() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -388,6 +383,91 @@ class _ChatState extends State<Chat> {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class BottomSheetAttachment extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: new BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0))),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                StringConstant.sendaFile,
+                style: TextStyle(
+                    fontSize: 18,
+                    color: SharedColor.fontColorGrey,
+                    fontWeight: FontWeight.w600),
+              ),
+              padding: EdgeInsets.all(15.0),
+            ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.clickaPhoto,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: SharedColor.fontColorGrey,
+                    fontWeight: FontWeight.w600),
+              ),
+              padding: EdgeInsets.all(10.0),
+            ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.uploadFromGallery,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: SharedColor.fontColorGrey,
+                    fontWeight: FontWeight.w600),
+              ),
+              padding: EdgeInsets.all(10.0),
+            ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.document,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: SharedColor.fontColorGrey,
+                    fontWeight: FontWeight.w600),
+              ),
+              padding: EdgeInsets.all(10.0),
+            ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.location,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: SharedColor.fontColorGrey,
+                    fontWeight: FontWeight.w600),
+              ),
+              padding: EdgeInsets.all(10.0),
+            ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.contact,
+                style: TextStyle(
+                    fontSize: 16,
+                    color: SharedColor.fontColorGrey,
+                    fontWeight: FontWeight.w600),
+              ),
+              padding: EdgeInsets.all(10.0),
+            ),
+          ],
+        ),
       ),
     );
   }

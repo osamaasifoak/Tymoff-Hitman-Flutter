@@ -28,6 +28,7 @@ class _SearchBarState extends State<SearchBar> {
             child: TextFormField(
                 controller: _searchController,
                 decoration: new InputDecoration(
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     hintStyle: TextStyle(
                       fontSize: 15,
                     ),
