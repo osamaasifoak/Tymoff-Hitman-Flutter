@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:tymoff/constant/constant.dart';
-import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/screens/messages/message_list.dart';
 import 'package:tymoff/screens/messages/status_list.dart';
@@ -75,83 +74,86 @@ class Messages extends StatelessWidget {
         body: Container(
           height: MediaQuery.of(context).size.height,
           color: Colors.white,
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Text(StringConstant.messages,
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black)),
-                  InkWell(
-                    onTap: () {
-                      scaffoldKey.currentState.showBottomSheet(
-                        (context) => Container(
-                          child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                              child: BottomSheetModalNewMessage()),
-                        ),
-
-                        // backgroundColor:
-                        //     SharedColor.backgroundColorblur.withOpacity(0.2),
-                        // elevation: 10.0
-                      );
-                    },
-                    child: Padding(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Transform.rotate(
-                        alignment: FractionalOffset.center,
-                        angle: -2.2,
-                        child: Container(
-                            alignment: Alignment.center,
-                            decoration: new BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.lightBlueAccent,
-                                    blurRadius: 3.0)
-                              ],
-                              shape: BoxShape.circle,
-                              color: Colors.lightBlueAccent,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: SvgPicture.asset(
-                                  AssetConstant.iconsMessage,
-                                  fit: BoxFit.contain,
-                                  color: Colors.white,
-                                  height: 12),
-                            )),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                  )
-                ],
-              ),
-              SearchBar(),
-              SampleJSON.messages.length != 0
-                  ? StatusList(
-                      status: SampleJSON.user,
+                    Text(StringConstant.messages,
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black)),
+                    InkWell(
+                      onTap: () {
+                        scaffoldKey.currentState.showBottomSheet(
+                          (context) => Container(
+                            child: BackdropFilter(
+                                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                child: BottomSheetModalNewMessage()),
+                          ),
+
+                          // backgroundColor:
+                          //     SharedColor.backgroundColorblur.withOpacity(0.2),
+                          // elevation: 10.0
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Transform.rotate(
+                          alignment: FractionalOffset.center,
+                          angle: -2.2,
+                          child: Container(
+                              alignment: Alignment.center,
+                              decoration: new BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.lightBlueAccent,
+                                      blurRadius: 3.0)
+                                ],
+                                shape: BoxShape.circle,
+                                color: Colors.lightBlueAccent,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: SvgPicture.asset(
+                                    AssetConstant.iconsMessage,
+                                    fit: BoxFit.contain,
+                                    color: Colors.white,
+                                    height: 12),
+                              )),
+                        ),
+                      ),
                     )
-                  : Container(),
-              SampleJSON.messages.length != 0
-                  ? MessageList(messages: SampleJSON.messages)
-                  : NoMessage(
-                      scaffoldKey: scaffoldKey,
-                    )
-            ],
+                  ],
+                ),
+                SearchBar(),
+                SampleJSON.messages.length != 0
+                    ? StatusList(
+                        status: SampleJSON.user,
+                      )
+                    : Container(),
+                SampleJSON.messages.length != 0
+                    ? MessageList(messages: SampleJSON.messages)
+                    : NoMessage(
+                        scaffoldKey: scaffoldKey,
+                      )
+              ],
+            ),
           ),
         ),
       ),

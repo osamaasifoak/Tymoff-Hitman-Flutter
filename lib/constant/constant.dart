@@ -22,6 +22,7 @@ class StringConstant {
   static const String sendMessages = "Send message";
   static const String send = "Send";
   static const String sendaFile = "Send a file";
+  static const String createAstatus = "Create a status";
   static const String sharePost = "Share post";
   static const String clickaPhoto = "Click a photo";
   static const String uploadFromGallery = "Upload from gallery";
