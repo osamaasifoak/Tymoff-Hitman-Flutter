@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:tymoff/constant/constant.dart';
 import 'package:tymoff/constant/shared_color.dart';
 import 'package:tymoff/constant/shared_styles.dart';
+import 'package:tymoff/provider/search_provider.dart';
 import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/shared_widgets/search_bar.dart';
 
 class BottomSheetModalNewMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    dynamic user = SampleJSON.user;
     return Container(
       decoration: new BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0),
-              topRight: Radius.circular(20.0))),
+              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0))),
       child: Column(children: <Widget>[
         Container(
           width: MediaQuery.of(context).size.width,
@@ -99,20 +101,23 @@ class BottomSheetModalNewMessage extends StatelessWidget {
                         Container(
                           height: MediaQuery.of(context).size.height,
                           child: ListView.builder(
-                            itemCount: SampleJSON.user.length,
+                            itemCount: user.length,
                             shrinkWrap: true,
                             primary: true,
                             physics: BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return ListTile(
-                                leading: CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                        SampleJSON.user[index]["image"])),
-                                title: Text(SampleJSON.user[index]["name"],
-                                    style: TextStyle(fontSize: 18)),
-                                trailing: Icon(FontAwesomeIcons.circle,
-                                    color: SharedColor.grey),
-                              );
+                              return Consumer<SearchProvider>(
+                                  builder: (context, searching, child) {
+                                return searching.searchingFilter == null ||
+                                        searching.searchingFilter == ""
+                                    ? listTileAllContacts(index)
+                                    : user[index]["name"]
+                                            .toLowerCase()
+                                            .contains(searching.searchingFilter
+                                                .toLowerCase())
+                                        ? listTileAllContacts(index)
+                                        : Container();
+                              });
                             },
                           ),
                         ),
@@ -144,8 +149,7 @@ class BottomSheetModalNewMessage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(StringConstant.send,
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 18)),
+                          style: TextStyle(color: Colors.white, fontSize: 18)),
                     ),
                   ),
                 ),
@@ -154,6 +158,16 @@ class BottomSheetModalNewMessage extends StatelessWidget {
           ),
         )
       ]),
+    );
+  }
+
+  Widget listTileAllContacts(index) {
+    return ListTile(
+      leading: CircleAvatar(
+          backgroundImage: NetworkImage(SampleJSON.user[index]["image"])),
+      title:
+          Text(SampleJSON.user[index]["name"], style: TextStyle(fontSize: 18)),
+      trailing: Icon(FontAwesomeIcons.circle, color: SharedColor.grey),
     );
   }
 }

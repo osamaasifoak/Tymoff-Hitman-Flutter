@@ -6,4 +6,5 @@ class SharedColor {
   static Color grey = Color(0xffF2F2F2);
   static Color fontColorGrey = Color(0xff343434);
   static Color backgroundColorblur = Color(0xff140F26);
+  static Color fontColorDarkBlue = Color(0xff0A1F44);
 }
