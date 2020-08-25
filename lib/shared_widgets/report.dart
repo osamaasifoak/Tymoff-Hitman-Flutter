@@ -269,20 +269,26 @@ class ReportOptions extends StatelessWidget {
               showBottomSheet(
                   backgroundColor: Colors.transparent,
                   context: context,
-                  builder: (context) => Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          BlurryEffect(0.5, 5, SharedColor.backgroundColorblur),
-                          Container(
-                              decoration: new BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20.0),
-                                    topRight: Radius.circular(20.0)),
-                                color: Colors.white,
-                              ),
-                              height: 300,
-                              child: ReportOthers()),
-                        ],
+                  builder: (context) => GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            BlurryEffect(
+                                0.5, 5, SharedColor.backgroundColorblur),
+                            Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0)),
+                                  color: Colors.white,
+                                ),
+                                height: 300,
+                                child: ReportOthers()),
+                          ],
+                        ),
                       ));
             },
             child: Container(
@@ -377,21 +383,26 @@ class ReportOthers extends StatelessWidget {
                     showBottomSheet(
                         backgroundColor: Colors.transparent,
                         context: context,
-                        builder: (context) => Stack(
-                              alignment: Alignment.bottomCenter,
-                              children: [
-                                BlurryEffect(
-                                    0.5, 5, SharedColor.backgroundColorblur),
-                                Container(
-                                    decoration: new BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0)),
-                                      color: Colors.white,
-                                    ),
-                                    height: 250,
-                                    child: ReportMessage()),
-                              ],
+                        builder: (context) => GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomCenter,
+                                children: [
+                                  BlurryEffect(
+                                      0.5, 5, SharedColor.backgroundColorblur),
+                                  Container(
+                                      decoration: new BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0)),
+                                        color: Colors.white,
+                                      ),
+                                      height: 250,
+                                      child: ReportMessage()),
+                                ],
+                              ),
                             ));
                   },
                   child: Padding(

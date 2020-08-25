@@ -31,23 +31,29 @@ class StatusList extends StatelessWidget {
                             showBottomSheet(
                                 backgroundColor: Colors.transparent,
                                 context: context,
-                                builder: (context) => Stack(
-                                      alignment: Alignment.bottomCenter,
-                                      children: [
-                                        BlurryEffect(0.5, 5,
-                                            SharedColor.backgroundColorblur),
-                                        Container(
-                                            decoration: new BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft:
-                                                      Radius.circular(20.0),
-                                                  topRight:
-                                                      Radius.circular(20.0)),
-                                              color: Colors.white,
-                                            ),
-                                            height: 200,
-                                            child: BottomSheetModalAddStatus()),
-                                      ],
+                                builder: (context) => GestureDetector(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Stack(
+                                        alignment: Alignment.bottomCenter,
+                                        children: [
+                                          BlurryEffect(0.5, 5,
+                                              SharedColor.backgroundColorblur),
+                                          Container(
+                                              decoration: new BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(20.0),
+                                                    topRight:
+                                                        Radius.circular(20.0)),
+                                                color: Colors.white,
+                                              ),
+                                              height: 200,
+                                              child:
+                                                  BottomSheetModalAddStatus()),
+                                        ],
+                                      ),
                                     ));
                           },
                           child: Column(
@@ -186,5 +192,3 @@ class BottomSheetModalAddStatus extends StatelessWidget {
     );
   }
 }
-
-

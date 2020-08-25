@@ -116,37 +116,43 @@ class _StatusState extends State<Status> {
                                   setState(() {
                                     if (value == '1') {
                                       scaffoldKey.currentState.showBottomSheet(
-                                        (context) => Stack(
-                                          alignment: Alignment.bottomCenter,
-                                          children: [
-                                            BlurryEffect(
-                                                0.5,
-                                                5,
-                                                SharedColor
-                                                    .backgroundColorblur),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 2.0),
-                                              child: Container(
-                                                  decoration: new BoxDecoration(
-                                                    borderRadius: BorderRadius
-                                                        .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    20.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    20.0)),
-                                                    color: Colors.white,
-                                                  ),
-                                                  height: 250,
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 2, right: 2),
-                                                  child: ReportOptions()),
-                                            ),
-                                          ],
+                                        (context) => GestureDetector(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Stack(
+                                            alignment: Alignment.bottomCenter,
+                                            children: [
+                                              BlurryEffect(
+                                                  0.5,
+                                                  5,
+                                                  SharedColor
+                                                      .backgroundColorblur),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 2.0),
+                                                child: Container(
+                                                    decoration:
+                                                        new BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      20.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      20.0)),
+                                                      color: Colors.white,
+                                                    ),
+                                                    height: 250,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 2, right: 2),
+                                                    child: ReportOptions()),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         backgroundColor: Colors.transparent,
                                       );
@@ -163,22 +169,28 @@ class _StatusState extends State<Status> {
                           enableFeedback: true,
                           onTap: () {
                             scaffoldKey.currentState.showBottomSheet(
-                              (context) => Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  BlurryEffect(
-                                      0.5, 5, SharedColor.backgroundColorblur),
-                                  Container(
-                                      decoration: new BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0)),
-                                        color: Colors.transparent,
-                                      ),
-                                      padding: const EdgeInsets.only(
-                                          top: 30.0, left: 2, right: 2),
-                                      child: BottomSheetStatusViewedByUsers()),
-                                ],
+                              (context) => GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: [
+                                    BlurryEffect(0.5, 5,
+                                        SharedColor.backgroundColorblur),
+                                    Container(
+                                        decoration: new BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(20.0)),
+                                          color: Colors.transparent,
+                                        ),
+                                        padding: const EdgeInsets.only(
+                                            top: 30.0, left: 2, right: 2),
+                                        child:
+                                            BottomSheetStatusViewedByUsers()),
+                                  ],
+                                ),
                               ),
                               backgroundColor: Colors.transparent,
                             );

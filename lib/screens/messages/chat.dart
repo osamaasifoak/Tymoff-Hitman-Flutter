@@ -21,11 +21,10 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  dynamic chat =  SampleJSON.chat;
+  dynamic chat = SampleJSON.chat;
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -105,6 +104,9 @@ class _ChatState extends State<Chat> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: Colors.black)),
+                  Container(),
+                  Container(),
+                  Container(),
                   Flexible(
                     child: InkWell(
                       onTap: () {
@@ -135,21 +137,22 @@ class _ChatState extends State<Chat> {
             ),
             SearchBar(),
             Expanded(
-      child: ListView.builder(
-          itemCount:
-              widget.userChat["unknown"] == false ? chat.length : 1,
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-             return Consumer<SearchProvider>(builder: (context, searching, child) {
-            return searching.searchingFilter == null ||
-                    searching.searchingFilter == ""
-                ? chatSection(context, index)
-                :  chat[index]["message"]
-                        .toLowerCase()
-                        .contains(searching.searchingFilter.toLowerCase())
-                    ? chatSection(context, index)
-                    : Container();
-          }); })),
+                child: ListView.builder(
+                    itemCount:
+                        widget.userChat["unknown"] == false ? chat.length : 1,
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Consumer<SearchProvider>(
+                          builder: (context, searching, child) {
+                        return searching.searchingFilter == null ||
+                                searching.searchingFilter == ""
+                            ? chatSection(context, index)
+                            : chat[index]["message"].toLowerCase().contains(
+                                    searching.searchingFilter.toLowerCase())
+                                ? chatSection(context, index)
+                                : Container();
+                      });
+                    })),
             inputTextFieldChat(context),
           ],
         ),
@@ -270,20 +273,25 @@ class _ChatState extends State<Chat> {
           InkWell(
             onTap: () {
               scaffoldKey.currentState.showBottomSheet(
-                (context) => Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    BlurryEffect(0.5, 5, SharedColor.backgroundColorblur),
-                    Container(
-                        decoration: new BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0)),
-                          color: Colors.transparent,
-                        ),
-                        padding: const EdgeInsets.only(top: 80.0),
-                        child: BottomSheetAttachment()),
-                  ],
+                (context) => GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      BlurryEffect(0.5, 5, SharedColor.backgroundColorblur),
+                      Container(
+                          decoration: new BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.0),
+                                topRight: Radius.circular(20.0)),
+                            color: Colors.transparent,
+                          ),
+                          padding: const EdgeInsets.only(top: 80.0),
+                          child: BottomSheetAttachment()),
+                    ],
+                  ),
                 ),
                 backgroundColor: Colors.transparent,
               );

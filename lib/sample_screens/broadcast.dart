@@ -125,22 +125,27 @@ class _BroadcastSettingsState extends State<BroadcastSettings> {
                         enableFeedback: true,
                         onTap: () {
                           scaffoldKey.currentState.showBottomSheet(
-                            (context) => Stack(
-                              alignment: Alignment.bottomCenter,
-                              children: [
-                                BlurryEffect(
-                                    0.5, 5, SharedColor.backgroundColorblur),
-                                Container(
-                                    decoration: new BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20.0),
-                                          topRight: Radius.circular(20.0)),
-                                      color: Colors.transparent,
-                                    ),
-                                    padding: const EdgeInsets.only(
-                                        top: 10.0, left: 2, right: 2),
-                                    child: BottomSheetModalAddNew()),
-                              ],
+                            (context) => GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomCenter,
+                                children: [
+                                  BlurryEffect(
+                                      0.5, 5, SharedColor.backgroundColorblur),
+                                  Container(
+                                      decoration: new BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0)),
+                                        color: Colors.transparent,
+                                      ),
+                                      padding: const EdgeInsets.only(
+                                          top: 10.0, left: 2, right: 2),
+                                      child: BottomSheetModalAddNew()),
+                                ],
+                              ),
                             ),
                             backgroundColor: Colors.transparent,
                           );
