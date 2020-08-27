@@ -140,18 +140,18 @@ class BottomSheetModalNewMessage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: FlatButton(
-                    color: SharedColor.blueAncent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(StringConstant.send,
-                          style: TextStyle(color: Colors.white, fontSize: 18)),
-                    ),
-                  ),
+                  // child: FlatButton(
+                  //   color: SharedColor.blueAncent,
+                  //   shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(50),
+                  //   ),
+                  //   onPressed: () {},
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.all(12.0),
+                  //     child: Text(StringConstant.send,
+                  //         style: TextStyle(color: Colors.white, fontSize: 18)),
+                  //   ),
+                  // ),
                 ),
               ),
             ],

@@ -93,7 +93,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 8),
+                              horizontal: 8.0, vertical: 4),
                           child: Text(StringConstant.media,
                               style: TextStyle(
                                   fontSize: 18,

@@ -145,11 +145,13 @@ class _StatusState extends State<Status> {
                                                                       20.0)),
                                                       color: Colors.white,
                                                     ),
-                                                    height: 250,
+                                                    height: 230,
                                                     padding:
                                                         const EdgeInsets.only(
                                                             left: 2, right: 2),
-                                                    child: ReportOptions()),
+                                                    child: ReportOptions(
+                                                      scaffoldKey: scaffoldKey,
+                                                    )),
                                               ),
                                             ],
                                           ),
