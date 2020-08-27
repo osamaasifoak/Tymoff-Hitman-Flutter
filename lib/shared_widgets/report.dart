@@ -320,55 +320,30 @@ class _ReportOptionsState extends State<ReportOptions> {
           Divider(),
           InkWell(
             onTap: () {
-              widget.scaffoldKey.currentState.showBottomSheet(
-                (context) => GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      BlurryEffect(0.5, 5, SharedColor.backgroundColorblur),
-                      Container(
-                          decoration: new BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20.0),
-                                topRight: Radius.circular(20.0)),
-                            color: Colors.transparent,
-                          ),
-                          padding: const EdgeInsets.only(
-                              top: 30.0, left: 2, right: 2),
-                          child: ReportOthers()),
-                    ],
-                  ),
-                ),
-                backgroundColor: Colors.transparent,
-              );
-
-              //  showBottomSheet(
-              //       backgroundColor: Colors.transparent,
-              //       context: context,
-              //       builder: (context) => GestureDetector(
-              //             onTap: () {
-              //               Navigator.pop(context);
-              //             },
-              //             child: Stack(
-              //               alignment: Alignment.bottomCenter,
-              //               children: [
-              //                 BlurryEffect(
-              //                     0.5, 5, SharedColor.backgroundColorblur),
-              //                 Container(
-              //                     decoration: new BoxDecoration(
-              //                       borderRadius: BorderRadius.only(
-              //                           topLeft: Radius.circular(20.0),
-              //                           topRight: Radius.circular(20.0)),
-              //                       color: Colors.white,
-              //                     ),
-              //                     height: 300,
-              //                     child: ReportOthers()),
-              //               ],
-              //             ),
-              //           ));
+              showBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (context) => GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            BlurryEffect(
+                                0.5, 5, SharedColor.backgroundColorblur),
+                            Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0)),
+                                  color: Colors.white,
+                                ),
+                                height: 300,
+                                child: ReportOthers()),
+                          ],
+                        ),
+                      ));
 
               // showBottomSheet(
               //     backgroundColor: Colors.transparent,
@@ -428,6 +403,30 @@ class ReportOthers extends StatelessWidget {
                   enableFeedback: true,
                   onTap: () {
                     Navigator.pop(context);
+                    showBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) => GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomCenter,
+                                children: [
+                                  BlurryEffect(
+                                      0.5, 5, SharedColor.backgroundColorblur),
+                                  Container(
+                                      decoration: new BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0)),
+                                        color: Colors.white,
+                                      ),
+                                      height: 230,
+                                      child: ReportOptions()),
+                                ],
+                              ),
+                            ));
                   },
                   child: Padding(
                     padding:
