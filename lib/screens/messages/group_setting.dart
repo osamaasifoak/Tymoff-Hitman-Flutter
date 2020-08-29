@@ -1,3 +1,4 @@
+import 'package:custom_switch/custom_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tymoff/constant/constant.dart';
@@ -125,7 +126,7 @@ class _GroupSettingState extends State<GroupSetting> {
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.grey),
                                 ),
-                                CupertinoSwitch(
+                                CustomSwitch(
                                   value: shareLinkSwitch,
                                   onChanged: (value) {
                                     setState(() {
@@ -188,7 +189,7 @@ class _GroupSettingState extends State<GroupSetting> {
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.grey),
                                 ),
-                                CupertinoSwitch(
+                                CustomSwitch(
                                   value: postByAdminSwitch,
                                   onChanged: (value) {
                                     setState(() {

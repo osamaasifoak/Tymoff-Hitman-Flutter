@@ -165,16 +165,21 @@ class _StatusState extends State<Status> {
                                       scaffoldKey.currentState.showBottomSheet(
                                         (context) => GestureDetector(
                                           onTap: () {
-                                            Navigator.pop(context);
+                                            // Navigator.pop(context);
                                           },
                                           child: Stack(
                                             alignment: Alignment.bottomCenter,
                                             children: [
-                                              BlurryEffect(
-                                                  0.5,
-                                                  5,
-                                                  SharedColor
-                                                      .backgroundColorblur),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: BlurryEffect(
+                                                    0.5,
+                                                    5,
+                                                    SharedColor
+                                                        .backgroundColorblur),
+                                              ),
                                               Padding(
                                                 padding:
                                                     const EdgeInsets.symmetric(

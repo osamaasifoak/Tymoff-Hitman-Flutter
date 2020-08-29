@@ -5,6 +5,7 @@ import 'package:tymoff/sample_json/json.dart';
 import 'package:tymoff/shared_widgets/flat_buttons.dart';
 import 'package:tymoff/shared_widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:custom_switch/custom_switch.dart';
 
 class ChatSettings extends StatefulWidget {
   @override
@@ -71,7 +72,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                               style:
                                   TextStyle(fontSize: 16, color: Colors.grey),
                             ),
-                            CupertinoSwitch(
+                            CustomSwitch(
                               value: isSwitched,
                               onChanged: (value) {
                                 setState(() {

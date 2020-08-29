@@ -323,26 +323,26 @@ class _ReportOptionsState extends State<ReportOptions> {
               showBottomSheet(
                   backgroundColor: Colors.transparent,
                   context: context,
-                  builder: (context) => GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: [
-                            BlurryEffect(
+                  builder: (context) => Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: BlurryEffect(
                                 0.5, 5, SharedColor.backgroundColorblur),
-                            Container(
-                                decoration: new BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20.0),
-                                      topRight: Radius.circular(20.0)),
-                                  color: Colors.white,
-                                ),
-                                height: 300,
-                                child: ReportOthers()),
-                          ],
-                        ),
+                          ),
+                          Container(
+                              decoration: new BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20.0),
+                                    topRight: Radius.circular(20.0)),
+                                color: Colors.white,
+                              ),
+                              height: 300,
+                              child: ReportOthers()),
+                        ],
                       ));
 
               // showBottomSheet(
@@ -406,26 +406,26 @@ class ReportOthers extends StatelessWidget {
                     showBottomSheet(
                         backgroundColor: Colors.transparent,
                         context: context,
-                        builder: (context) => GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  BlurryEffect(
+                        builder: (context) => Stack(
+                              alignment: Alignment.bottomCenter,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: BlurryEffect(
                                       0.5, 5, SharedColor.backgroundColorblur),
-                                  Container(
-                                      decoration: new BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0)),
-                                        color: Colors.white,
-                                      ),
-                                      height: 230,
-                                      child: ReportOptions()),
-                                ],
-                              ),
+                                ),
+                                Container(
+                                    decoration: new BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0)),
+                                      color: Colors.white,
+                                    ),
+                                    height: 230,
+                                    child: ReportOptions()),
+                              ],
                             ));
                   },
                   child: Padding(
@@ -500,26 +500,26 @@ class ReportOthers extends StatelessWidget {
                     showBottomSheet(
                         backgroundColor: Colors.transparent,
                         context: context,
-                        builder: (context) => GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  BlurryEffect(
+                        builder: (context) => Stack(
+                              alignment: Alignment.bottomCenter,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: BlurryEffect(
                                       0.5, 5, SharedColor.backgroundColorblur),
-                                  Container(
-                                      decoration: new BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0)),
-                                        color: Colors.white,
-                                      ),
-                                      height: 250,
-                                      child: ReportMessage()),
-                                ],
-                              ),
+                                ),
+                                Container(
+                                    decoration: new BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0)),
+                                      color: Colors.white,
+                                    ),
+                                    height: 250,
+                                    child: ReportMessage()),
+                              ],
                             ));
                   },
                   child: Padding(
