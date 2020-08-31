@@ -28,33 +28,37 @@ class StatusList extends StatelessWidget {
                       ? InkWell(
                           enableFeedback: true,
                           onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              backgroundColor: Colors.transparent,
-                              // isScrollControlled: true,
-                              builder: (context) => SizedBox.expand(
-                                  child: Container(
-                                height: MediaQuery.of(context).size.height,
-                                decoration: BoxDecoration(
-                                    color: SharedColor.backgroundColorblur
-                                        .withOpacity(0.5)),
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                                  child: DraggableScrollableSheet(
-                                      expand: false,
-                                      initialChildSize: 0.3,
-                                      maxChildSize: 0.34,
-                                      minChildSize: 0.3,
-                                      builder: (BuildContext context,
-                                          ScrollController scrollController) {
-                                        return BottomSheetModalAddStatus(
-                                          controller: scrollController,
-                                        );
-                                      }),
-                                ),
-                              )),
-                            );
+                            showBottomSheet(
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (context) => GestureDetector(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Stack(
+                                        alignment: Alignment.bottomCenter,
+                                        children: [
+                                          BlurryEffect(0.5, 5,
+                                              SharedColor.backgroundColorblur),
+                                          IntrinsicHeight(
+                                            child: Container(
+                                                decoration: new BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  8.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  8.0)),
+                                                  color: Colors.white,
+                                                ),
+                                                child:
+                                                    BottomSheetModalAddStatus()),
+                                          ),
+                                        ],
+                                      ),
+                                    ));
                             // showModalBottomSheet(
                             //     context: context,
                             //     backgroundColor: Colors.transparent,
