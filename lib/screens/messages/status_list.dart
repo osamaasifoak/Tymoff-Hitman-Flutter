@@ -31,33 +31,25 @@ class StatusList extends StatelessWidget {
                             showBottomSheet(
                                 backgroundColor: Colors.transparent,
                                 context: context,
-                                builder: (context) => GestureDetector(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Stack(
-                                        alignment: Alignment.bottomCenter,
-                                        children: [
-                                          BlurryEffect(0.5, 5,
-                                              SharedColor.backgroundColorblur),
-                                          IntrinsicHeight(
-                                            child: Container(
-                                                decoration: new BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  8.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  8.0)),
-                                                  color: Colors.white,
-                                                ),
-                                                child:
-                                                    BottomSheetModalAddStatus()),
-                                          ),
-                                        ],
-                                      ),
+                                builder: (context) => Stack(
+                                      alignment: Alignment.bottomCenter,
+                                      children: [
+                                        BlurryEffect(0.5, 5,
+                                            SharedColor.backgroundColorblur),
+                                        DraggableScrollableSheet(
+                                            expand: false,
+                                            initialChildSize: 0.3,
+                                            maxChildSize: 0.34,
+                                            minChildSize: 0.3,
+                                            builder: (BuildContext context,
+                                                ScrollController
+                                                    scrollController) {
+                                              return BottomSheetModalAddStatus(
+                                                controller: scrollController,
+                                              );
+                                            }),
+                                        // ),
+                                      ],
                                     ));
                           },
                           child: Column(
@@ -146,53 +138,70 @@ class StatusList extends StatelessWidget {
 }
 
 class BottomSheetModalAddStatus extends StatelessWidget {
+  final ScrollController controller;
+
+  const BottomSheetModalAddStatus({Key key, this.controller}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          child: Text(
-            StringConstant.createAstatus,
-            style: textTheme.headline6.copyWith(
-                color: SharedColor.fontColorGrey,
-                fontSize: 20,
-                fontWeight: FontWeight.w400),
-          ),
-          padding: EdgeInsets.all(15.0),
+    return SingleChildScrollView(
+      controller: controller,
+      child: Container(
+        decoration: new BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(8.0), topRight: Radius.circular(8.0)),
+          color: Colors.white,
         ),
-        Divider(),
-        Container(
-          child: Text(
-            StringConstant.clickaPhoto,
-            style: TextStyle(fontSize: 16, color: SharedColor.fontColorGrey),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
-        ),
-        Divider(),
-        Container(
-          child: Text(
-            StringConstant.uploadFromGallery,
-            style: TextStyle(fontSize: 16, color: SharedColor.fontColorGrey),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
-        ),
-        Divider(),
-        InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, RoutesConstant.status, arguments: 1);
-          },
-          child: Container(
-            child: Text(
-              "temporary button",
-              style: TextStyle(fontSize: 16, color: SharedColor.fontColorGrey),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                StringConstant.createAstatus,
+                style: textTheme.headline6.copyWith(
+                    color: SharedColor.fontColorGrey,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400),
+              ),
+              padding: EdgeInsets.all(15.0),
             ),
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
-          ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.clickaPhoto,
+                style:
+                    TextStyle(fontSize: 16, color: SharedColor.fontColorGrey),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+            ),
+            Divider(),
+            Container(
+              child: Text(
+                StringConstant.uploadFromGallery,
+                style:
+                    TextStyle(fontSize: 16, color: SharedColor.fontColorGrey),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+            ),
+            Divider(),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, RoutesConstant.status,
+                    arguments: 1);
+              },
+              child: Container(
+                child: Text(
+                  "temporary button",
+                  style:
+                      TextStyle(fontSize: 16, color: SharedColor.fontColorGrey),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
