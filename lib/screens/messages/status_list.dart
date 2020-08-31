@@ -28,29 +28,57 @@ class StatusList extends StatelessWidget {
                       ? InkWell(
                           enableFeedback: true,
                           onTap: () {
-                            showBottomSheet(
-                                backgroundColor: Colors.transparent,
-                                context: context,
-                                builder: (context) => Stack(
-                                      alignment: Alignment.bottomCenter,
-                                      children: [
-                                        BlurryEffect(0.5, 5,
-                                            SharedColor.backgroundColorblur),
-                                        DraggableScrollableSheet(
-                                            expand: false,
-                                            initialChildSize: 0.3,
-                                            maxChildSize: 0.34,
-                                            minChildSize: 0.3,
-                                            builder: (BuildContext context,
-                                                ScrollController
-                                                    scrollController) {
-                                              return BottomSheetModalAddStatus(
-                                                controller: scrollController,
-                                              );
-                                            }),
-                                        // ),
-                                      ],
-                                    ));
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              // isScrollControlled: true,
+                              builder: (context) => SizedBox.expand(
+                                  child: Container(
+                                height: MediaQuery.of(context).size.height,
+                                decoration: BoxDecoration(
+                                    color: SharedColor.backgroundColorblur
+                                        .withOpacity(0.5)),
+                                child: BackdropFilter(
+                                  filter:
+                                      ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                                  child: DraggableScrollableSheet(
+                                      expand: false,
+                                      initialChildSize: 0.3,
+                                      maxChildSize: 0.34,
+                                      minChildSize: 0.3,
+                                      builder: (BuildContext context,
+                                          ScrollController scrollController) {
+                                        return BottomSheetModalAddStatus(
+                                          controller: scrollController,
+                                        );
+                                      }),
+                                ),
+                              )),
+                            );
+                            // showModalBottomSheet(
+                            //     context: context,
+                            //     backgroundColor: Colors.transparent,
+                            //     isScrollControlled: true,
+                            //     builder: (context) => Stack(
+                            //           alignment: Alignment.bottomCenter,
+                            //           children: [
+                            //             BlurryEffect(0.5, 5,
+                            //                 SharedColor.backgroundColorblur),
+                            //             DraggableScrollableSheet(
+                            //                 expand: false,
+                            //                 initialChildSize: 0.3,
+                            //                 maxChildSize: 0.34,
+                            //                 minChildSize: 0.3,
+                            //                 builder: (BuildContext context,
+                            //                     ScrollController
+                            //                         scrollController) {
+                            //                   return BottomSheetModalAddStatus(
+                            //                     controller: scrollController,
+                            //                   );
+                            //                 }),
+                            //             // ),
+                            //           ],
+                            //         ));
                           },
                           child: Column(
                             children: <Widget>[
